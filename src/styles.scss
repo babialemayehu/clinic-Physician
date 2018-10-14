@@ -1,0 +1,72 @@
+@import "../node_modules/materialize-css/dist/css/materialize.css"; 
+@import '~@angular/material/theming'; 
+
+@include mat-core(); 
+
+$primary: mat-palette($mat-blue, 700, 500, 300); 
+$accent: mat-palette($mat-yellow, A400, A200, A600); 
+$warn: mat-palette($mat-red);
+
+
+$theme: mat-light-theme(
+    $primary, 
+    $accent
+); 
+
+@include angular-material-theme($theme); 
+
+//  Html modifcation
+dl{dt{font-weight: 500}}
+button:focus{ background: darken($color: #ddd, $amount: 0.1)}
+// Color
+.primary{ background-color: mat-color($primary) }
+.accent{ background-color: mat-color($accent); i  { color: black } }
+.accent:hover{background-color: mat-color($accent, A400); }
+.danger-text{ color: mat-color($warn, 500)}
+//  Text topography
+.secondery{ color: lighten(#555, .5)}
+.small { font-size: .8em !important }
+.larg-text { font-size: 1.3em }
+
+// capitalaization
+.uppercase{ text-transform: uppercase }
+.capitalize{ text-transform: capitalize }
+
+.character-counter{display:none}
+.mat-card.form-container{
+    padding: 0px; 
+    padding-top: 24px; 
+    padding-bottom: 15%;
+    section{
+        padding-left: 10%; 
+        padding-right: 10%; 
+    }
+}
+
+.progress{
+    background-color: mat-color($accent, A100); 
+    .indeterminate{ background-color: darken(mat-color($accent, A400),0.6)}
+}
+tr.mat-row:hover{
+    background-color: darken($color: #ddd, $amount: 0.1); 
+}
+input{margin-bottom: 2px}
+form.container{width: 90%}
+header{ margin-bottom: 2em}
+.mat-form-field-wrapper{margin-bottom: .3em}
+.mat-form-field {width: 100%}
+
+.mat-dialog-container{
+    padding-left: 0px !important; 
+    padding-right: 0px !important; 
+}
+.progress{
+    margin-top: 0px;
+    top: -24px; 
+}
+.form-loading{
+    pointer-events: none; 
+    opacity: .3; 
+}
+.hide{ display: none}
+ 

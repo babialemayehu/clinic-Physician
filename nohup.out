@@ -1,0 +1,53 @@
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+
+Date: 2018-08-28T07:08:52.480Z
+Hash: dd56bbb55b7e74d21d59
+Time: 64713ms
+chunk {main} main.js, main.js.map (main) 77.1 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 227 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 5.22 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 223 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 7.31 MB [initial] [rendered]
+ℹ ｢wdm｣: Compiled successfully.
+Port 4200 is already in use. Use '--port' to specify a different port.
+ℹ ｢wdm｣: Compiling...
+
+Date: 2018-08-28T08:08:53.980Z - Hash: dd56bbb55b7e74d21d59 - Time: 1191ms
+5 unchanged chunks
+ℹ ｢wdm｣: Compiled successfully.
+ℹ ｢wdm｣: Compiling...
+
+Date: 2018-08-28T08:09:01.951Z - Hash: dd56bbb55b7e74d21d59 - Time: 1182ms
+5 unchanged chunks
+ℹ ｢wdm｣: Compiled successfully.
+ℹ ｢wdm｣: Compiling...
+
+Date: 2018-08-28T08:09:05.193Z - Hash: dd56bbb55b7e74d21d59 - Time: 1439ms
+5 unchanged chunks
+ℹ ｢wdm｣: Compiled successfully.
+ℹ ｢wdm｣: Compiling...
+
+Date: 2018-08-28T08:09:07.878Z - Hash: dd56bbb55b7e74d21d59 - Time: 1656ms
+5 unchanged chunks
+ℹ ｢wdm｣: Compiled successfully.
+ℹ ｢wdm｣: Compiling...
+
+Date: 2018-08-28T08:09:31.692Z - Hash: dd56bbb55b7e74d21d59 - Time: 740ms
+5 unchanged chunks
+ℹ ｢wdm｣: Compiled successfully.
+ℹ ｢wdm｣: Compiling...
+
+Date: 2018-08-28T08:10:35.425Z - Hash: dd56bbb55b7e74d21d59 - Time: 2206ms
+5 unchanged chunks
+ℹ ｢wdm｣: Compiled successfully.
+ℹ ｢wdm｣: Compiling...
+
+Date: 2018-08-28T08:11:23.972Z - Hash: dd56bbb55b7e74d21d59 - Time: 6249ms
+5 unchanged chunks
+ℹ ｢wdm｣: Compiled successfully.
+ℹ ｢wdm｣: Compiling...
+ℹ ｢wdm｣: wait until bundle finished: /users
+
+Date: 2018-08-28T08:11:30.061Z - Hash: dd56bbb55b7e74d21d59 - Time: 5223ms
+5 unchanged chunks
+ℹ ｢wdm｣: Compiled successfully.

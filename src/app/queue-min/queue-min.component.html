@@ -1,0 +1,13 @@
+<div class="titel">
+  <app-card-title titel="Patients queue" icon="launch" (onClick)="maximaize()"></app-card-title>
+</div>
+<mat-list>
+
+  <mat-list-item *ngFor="let queue of queues">
+    <span id="id"><pre>{{(queue)?.patient.reg_id}}</pre></span>
+    <i class="right small secondery">{{(queue)?.humanWaitingTime}}</i>
+  </mat-list-item> 
+</mat-list>
+<div class="center" *ngIf="queues.length == 0" style="margin: 24px 0px; width: 100%; opacity: 0.8">
+  <h6><strong class="secondery center"><B>There is no patient in the queue</B></strong></h6>
+</div>

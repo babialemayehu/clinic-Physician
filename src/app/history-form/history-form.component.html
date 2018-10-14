@@ -1,0 +1,36 @@
+<section class="row" style="margin-bottom: 0px">
+  <form [formGroup]="form">
+    <mat-form-field>
+      <textarea matInput formControlName="chief_complaint" placeholder="Chief complaint (CC)"></textarea>
+    </mat-form-field>
+    <div class="row">
+      <p class="small" style="padding-left: 24px; width: 100%">Vital signs <span class="small secondery">(optional)</span></p>
+      <div class="col m3">
+         <mat-form-field>
+           <input matInput formContrlName="temprature" placeholder="Temprature"/>
+         </mat-form-field>
+      </div>
+      <div class="col m3">
+        <mat-form-field>
+          <input matInput formConrolName="BP" placeholder="BP"/>
+        </mat-form-field> 
+      </div>
+      <div class="col m3">
+        <mat-form-field>
+          <input matInput formConrolName="puls_rate" placeholder="Puls rate"/>
+        </mat-form-field> 
+      </div>
+      <div class="col m3">
+        <mat-form-field>
+          <input matInput formControlName="respiratory_rate" placeholder="Respiratrory_rate"/>
+        </mat-form-field>
+      </div>
+    </div>
+    <div id="buttons">
+       
+      <button mat-flat-button color="primary" class="right">Finish</button>  
+      <button mat-stroked-button color="primary" class="right">Laboratory</button>
+      <a mat-button class="right">Skip</a> 
+    </div>
+  </form>
+</section>

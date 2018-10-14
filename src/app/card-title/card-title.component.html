@@ -1,0 +1,21 @@
+<div class="contain">
+  <div class="titel"> <strong><b>{{_titel}}</b></strong></div>
+  <div class="icon">
+    <mat-icon 
+    (click)="action()" 
+    mat-icon-button 
+    [matMenuTriggerFor]="appMenu"
+    style="font-size: 18px;width: 18px;height: 18px;cursor: pointer;">
+      {{_icon}}
+    </mat-icon>
+  </div>
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item 
+    *ngFor="let option of options"
+    (click)="select(option.value)"
+    class="option">
+      <mat-icon class="option-icon" *ngIf="option.icon != ''">{{option.icon}}</mat-icon>
+      <span>{{option.text}}</span>
+    </button>
+  </mat-menu>
+</div>

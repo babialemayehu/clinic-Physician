@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row" *ngIf="step == 0">
+    <app-change-password (status)="updateStatus($event)"></app-change-password>
+  </div>
+  <div class="row" *ngIf="step == 1">
+    <app-upload (status)="updateStatus($event)"></app-upload>
+  </div>
+  <div class="row" *ngIf="step == 2">
+    <section id="welcome">
+      <h3>Well come</h3>
+      <button mat-flat-button color="primary" (click)="dialogRef.close()">CONTINUE</button>
+    </section>
+  </div>
+</div>

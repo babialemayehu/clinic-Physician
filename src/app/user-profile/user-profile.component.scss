@@ -1,0 +1,42 @@
+.profile-pic{
+    width: 150px; 
+}
+.row:first-child{
+    margin-bottom: 0px; 
+}
+#primary-profile-text{ text-align: left }
+#primary-profile-pic{ text-align: right }
+#personal-profile{
+    div.col{padding: 3px; }
+    div.col>div{
+        border: 1px solid #ddd;
+        // margin: .3em;
+        border-radius: 3px;
+        padding: 14px;
+        .material-icons{
+
+        }
+    }
+    
+    strong{
+        line-height: 2px; 
+        padding-left: 4px; 
+    }
+    margin-top: 5%;
+}
+@media only screen and (max-width: 768px){
+    #primary-profile-text{ text-align: center }
+    #primary-profile-pic{ text-align: center }
+}
+@media only screen and (min-width: 601px){
+    #primary-profile-text{
+        text-align: left; 
+        position: relative;
+        height: 150px;
+        div{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%); 
+        }
+    } 
+}

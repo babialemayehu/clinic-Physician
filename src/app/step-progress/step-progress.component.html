@@ -1,0 +1,3 @@
+<ul class="progressbar">
+  <li *ngFor="let step of _steps; let i = index" [style.width]='liWidth' [class.active]="activeStep >= i">{{step}}</li>
+</ul>

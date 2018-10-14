@@ -1,0 +1,12 @@
+<app-card-title id="title" titel="Recent visits to physician" (onClick)="open()" icon="launch"></app-card-title>
+<mat-list style="width: 100%"> 
+  <mat-list-item *ngFor="let visit of visits">
+   
+    <strong> {{visit.physician.first_name + " "+ visit.physician.father_name}}</strong>
+    <i class="secondery right">{{visit.humanWaitingTime}}</i>
+  </mat-list-item>
+</mat-list>
+
+<div class="container center" *ngIf="isEmpty" style="margin: 24px 0px; width: 100%; opacity: 0.8">
+  <h6><strong class="secondery center"><B>This is first visit</B></strong></h6>
+</div>

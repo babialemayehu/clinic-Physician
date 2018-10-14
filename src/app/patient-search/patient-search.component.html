@@ -1,0 +1,24 @@
+<div>
+  <mat-card>
+    <div class="container" style="margin:0px; width: 100%;">
+      <div class="row" style="margin: 0px">
+        <div class="col s11 m11" style="text-align: left; padding: 0px">
+          <input type="search" id="search" placeholder="Search patient" 
+              style="margin: 0px;width: 100%;"
+              [formControl]="searchControl"
+              [matAutocomplete]="auto">
+              
+        </div>
+        <div class="col s1 m1">
+          <mat-icon (click)="$search()">search</mat-icon>
+        </div>
+      </div>
+    </div>
+    
+  </mat-card>
+</div>
+<mat-autocomplete #auto="matAutocomplete">
+  <mat-option *ngFor="let patient of autocomplets" [value]="patient.reg_id" (click)="$search(patient)">
+    {{patient.reg_id}}<i class="secondery right">{{patient.first_name}} {{patient.father_name}}</i>
+  </mat-option>
+</mat-autocomplete>

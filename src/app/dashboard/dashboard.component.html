@@ -1,0 +1,36 @@
+<section>
+ <div class="row">
+   <div class="col m4 l3 s12">
+     <mat-card id="queue">
+       <app-queue-min [loadTriggr]="load"></app-queue-min>
+      </mat-card>
+   </div>
+   <div class="col m8 l9 s12">  
+     <div id="show-area">
+        <mat-card *ngIf="!start" style="margin: 10%">
+          <h3 class="center">Wellcome</h3>
+          <h6 class="center">Do you want to start treatement?</h6>
+          <br>
+          <div style="width: 80%; margin:auto">
+            <app-room-number 
+            (status)="onStatus($event)" 
+            [roomNumber]="($auth)?.room_number"
+            ></app-room-number>           
+          </div>
+          
+          <div style="width: 100%; text-align: center;">
+            <button mat-flat-button color="primary" (click)="start = true">Start</button>
+          </div>
+        </mat-card>
+        <div *ngIf="start" id="main">
+          <mat-card *ngIf="start">
+            <app-patinet-view [patient]="patient"></app-patinet-view>
+          </mat-card>
+          <mat-card>
+            <app-history-form></app-history-form>
+          </mat-card> 
+        </div>
+     </div> 
+   </div>
+ </div>
+</section>

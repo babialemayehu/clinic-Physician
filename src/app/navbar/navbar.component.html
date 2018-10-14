@@ -1,0 +1,25 @@
+<nav class="primary" >
+  <div class="container">
+      <div class="nav-wrapper">
+          <a href="#" class="brand-logo">DMU Clinic</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li *ngFor="let item of menuItems"><a [href]="item.href">{{item.text}}</a></li>
+          </ul>
+      </div>
+  </div>
+  <div>
+    <span href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></span>
+  </div>
+  <div class="container ">
+    <span class='right hide-on-large-only '>
+          <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+    </span>
+  </div>
+
+</nav>
+
+<mat-menu #appMenu="matMenu">
+  <button mat-menu-item [routerLink]="item.href" *ngFor="let item of menuItems">{{item.text}}</button>
+</mat-menu>

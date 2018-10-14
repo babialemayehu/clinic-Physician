@@ -1,0 +1,19 @@
+<div class="row" style="width: 100%">
+  <h5 style="display: inline">{{(patient)?.first_name}} {{(patient)?.father_name}} {{(patient)?.grand_father_name}}</h5>
+  <!-- <strong class="right"><span style="margin-right: 24px">{{(patient)?.reg_id}}</span> 
+  </strong><br> -->
+  <br>
+  <strong class="secondery">{{((patient)?.department)?.name}} Department</strong><br>
+  <strong class="secondery">Id number {{(patient)?.reg_id}}</strong><br>
+
+    <div class="col m6 l6 s12">
+      <section>
+        <strong>Borned at </strong><span>{{(patient)?.birth_date}}</span><br>
+        <strong>Dorm </strong> <span>B {{(patient)?.dorm_block}} D {{(patient)?.dorm_room_number}}</span><br>
+        <strong>Registerd </strong><span>{{(patient)?.registerd_at}}</span><br>
+      </section>
+    </div>
+    <div class="col m6 l6 s12" style="border: 1px solid #ededed;margin: -20px; padding: 16px">
+      <app-recent-visits [patient]="patient" icon="launch"></app-recent-visits>
+    </div> 
+</div>

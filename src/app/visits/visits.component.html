@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <mat-card *ngIf="!(loaded && !error)" class="container col s12 m8 offset-m2">
+      <div *ngIf="!loaded" class="center">Loading...</div>
+      <div *ngIf="error" class="center danger-text"><b>Some error occured</b></div>
+    </mat-card>
+  </div>
+</div>
+<div class="container" [hidden]="!(loaded && !error)">
+  <div class="row">
+    <div class="mat-elevation-z8 col s12 m8 offset-m2">
+      <table mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+        <!-- Id Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+          <td mat-cell *matCellDef="let row">{{row.date}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="physician">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Physician</th>
+          <td mat-cell *matCellDef="let row">{{row.physician.first_name + " "+row.physician.father_name+" "+row.physician.grand_father_name}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator #paginator
+        [length]="dataSource.data.length"
+        [pageIndex]="0"
+        [pageSize]="50"
+        [pageSizeOptions]="[25, 50, 100, 250]">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

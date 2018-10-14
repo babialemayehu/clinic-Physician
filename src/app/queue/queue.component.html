@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+      <div class="mat-elevation-z8 col m8 s12 offset-m2">
+        <table mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+          <!-- Id Column -->
+          <ng-container matColumnDef="reg_id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Registral id</th>
+            <td mat-cell *matCellDef="let row">{{row.patient.reg_id}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let row">{{row.patient.first_name}} {{row.patient.father_name}} {{row.patient.grand_father_name}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="humanWaitingTime">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Arrival</th>
+            <td mat-cell *matCellDef="let row">{{row.humanWaitingTime}}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator #paginator
+          [length]="dataSource.data.length"
+          [pageIndex]="0"
+          [pageSize]="50"
+          [pageSizeOptions]="[25, 50, 100, 250]">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>

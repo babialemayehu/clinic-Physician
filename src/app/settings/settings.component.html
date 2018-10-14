@@ -1,0 +1,14 @@
+<section class="container">
+  <div class="row">
+    <div class="col s12 m6 l6 offset-m3 offset-l3">
+      <mat-card>
+        <mat-list>
+          <mat-list-item routerLink="change password" class="waves-effect"><i class="material-icons">vpn_key</i> <p>Change password</p></mat-list-item>
+          <mat-list-item routerLink="change profile picture" class="waves-effect"><i class="material-icons">account_circle</i><p>Change profile picture</p></mat-list-item>
+          <mat-list-item (click)="goto('change password')" class="waves-effect"><i class="material-icons">vpn_key</i></mat-list-item>
+          <mat-list-item (click)="goto('change password')" class="waves-effect"><i class="material-icons">vpn_key</i></mat-list-item>
+        </mat-list>
+      </mat-card>
+    </div>
+  </div>
+</section>

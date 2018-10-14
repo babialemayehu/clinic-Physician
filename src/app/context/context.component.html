@@ -1,0 +1,9 @@
+<p class="text-center">Right click to see menu</p>
+<div class="d-flex flex-row justify-content-around bd-highlight">
+  <div class="p-4 p-md-5 bd-highlight bg-light border rounded target"
+    [contextMenuTrigger]="menu" 
+    [menuContext]="items"
+    (menuAction)="handleClose('this si firm menu')" class='card' >
+    Basic Menu
+  </div>
+</div>

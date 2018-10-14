@@ -1,0 +1,25 @@
+.mat-card{
+    padding: 0px; 
+    padding-bottom: 1em;
+    padding-top: 1em; 
+    width: 180px;
+    
+    .mat-list-item-content{
+        height: 30px; 
+        padding-top: 4px; 
+        padding-bottom: 4px;
+    }
+    .mat-list-item:hover{
+        background: darken(#eee, 0.1); 
+    }
+    .icon{
+        padding: 5px;
+        font-size: 1.5rem; 
+        opacity: .8; 
+    }
+    .text{
+        margin-left: 1.2em; 
+        font-size: 1em; 
+    }
+    .mat-list{padding-top:0px; }
+}
