@@ -1,0 +1,64 @@
+<div *ngIf="tests.length == 0">
+  <mat-card style="text-align: center"><strong><b>No tests are requested yet</b></strong></mat-card>
+</div>
+<div *ngIf="tests.length > 0">
+  <div style="width: 90%; margin:auto" *ngIf="tests.length > 2"> 
+    <mat-form-field>   
+      <input matInput [formControl]="filter" placeholder="Search requested laboratory test">    
+    </mat-form-field>
+  </div>
+  
+  <table mat-table [dataSource]="testDatasource" class="mat-elevation-z2">
+    <!-- number Column -->
+    <ng-container matColumnDef="no">
+        <th mat-header-cell *matHeaderCellDef> No </th>
+        <td mat-cell *matCellDef="let test"> {{tests.indexOf(test)+1}} </td>
+      </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let test"> {{test.name}} </td>
+    </ng-container>
+
+     <!-- icon Column -->
+     <ng-container matColumnDef="icon">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let test" style="text-align: right">
+        <button mat-icon-button class="danger-text" (click)="remove(test)">
+          <mat-icon>remove_circle_outline</mat-icon>
+        </button>  
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<mat-card style="margin-top: 16px;" class="row">
+  <h5 style="margin-left: 16px">Laboratory</h5>
+    <div class="row" style="margin: 0px">
+      <div class="col s11 m11" style="padding-right: 0px">
+        <mat-form-field>   
+          <input matInput [formControl]="add" placeholder="Laboratory test name" [matAutocomplete]="auto">    
+        </mat-form-field>
+      </div>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let test of testAuto" [value]="test.name" (click)="$add(test)">
+          {{ test.name }}
+        </mat-option>
+      </mat-autocomplete>
+      <div class="col s1 m1" style="padding-left: 0px">
+        <button mat-icon-button>
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div id='#buttons' style="margin-top: 8px;margin-right: 36px" class="right">
+      <button mat-flat-button (click)="send()">
+        <span>SEND </span>
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+</mat-card>

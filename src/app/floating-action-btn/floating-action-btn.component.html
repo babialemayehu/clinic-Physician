@@ -5,8 +5,12 @@
     <ul>
       <li><a class="btn-floating red"><i class="material-icons">perm_identity</i></a></li>
       <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-      <li><a class="btn-floating blue modal-trigger" (click)="openRagistrationFrom()"><i class="material-icons">person_add</i></a></li>
+      <li (click)="$action(2)"><a class="btn-floating green">
+        <img src="assets/drug.svg" style="width: 1.4rem; margin-top: 9px"/>
+      </a></li>
+      <li (click)="$action(1)"><a class="btn-floating blue modal-trigger" >
+        <img src="assets/flask-full.svg" style="width: 1.3rem; margin-top: 10px"/></a>
+      </li>
     </ul>
 </div>
 

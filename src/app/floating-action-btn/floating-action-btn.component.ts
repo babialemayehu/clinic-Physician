@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material'; 
 import { RegisterationFormComponent } from '../registeration-form/registeration-form.component'; 
 import { RoleService } from '../service/role.service'; 
@@ -10,6 +10,8 @@ import { RoleService } from '../service/role.service';
   providers: [RoleService],
 })
 export class FloatingActionBtnComponent implements OnInit {
+
+  @Output() action = new EventEmitter(); 
 
   constructor(public registrationDialog: MatDialog,  public _roles: RoleService) { }
   public roles: object; 
@@ -33,5 +35,20 @@ export class FloatingActionBtnComponent implements OnInit {
         console.log(responce); 
       }
     );
+  }
+
+  /**
+   * 1 for pahrmaccy
+   * 2 for laboratory
+   */
+  $action(action: number){
+    switch(action){
+      case 1: 
+      this.action.emit(2);
+      break; 
+      case 2:
+      this.action.emit(3); 
+      break; 
+    }
   }
 }

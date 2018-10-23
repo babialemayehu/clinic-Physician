@@ -71,6 +71,8 @@ import { UploadComponent } from './upload_profile_pic/upload/upload.component';
 import { RouteComponent } from './upload_profile_pic/route/route.component';
 import { RoomNumberComponent } from './room-number/room-number.component';
 import { HistoryFormComponent } from './history-form/history-form.component';
+import { LaboratoryComponent } from './laboratory/laboratory.component';
+import { PharmacyComponent } from './pharmacy/pharmacy.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +105,8 @@ import { HistoryFormComponent } from './history-form/history-form.component';
     RouteComponent,
     RoomNumberComponent,
     HistoryFormComponent,
+    LaboratoryComponent,
+    PharmacyComponent,
    
     // ContextMenu,
   ],

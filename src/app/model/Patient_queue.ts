@@ -1,5 +1,6 @@
 import { Patient } from "./Patient"; 
 import { User } from "./User";
+import { Hisstory } from "./Hisstory";
 
 export interface Patient_queue{
     id:number, 
@@ -12,4 +13,5 @@ export interface Patient_queue{
     queue_number: number, 
     humanWaitingTime: string,
     date: string,
+    hisstory: Hisstory
 }

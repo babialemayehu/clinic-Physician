@@ -21,9 +21,14 @@
     background-color: #ddd; 
     cursor: not-allowed; 
 }
-#main{
+section{
     .mat-card{
        margin-bottom: 8px; 
+    }
+}
+#buttons{
+    button, a{
+        margin-right: 8px; 
     }
 }
 @media screen and (min-width: 910px) {

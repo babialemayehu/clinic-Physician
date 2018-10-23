@@ -1,0 +1,36 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { User } from '../model/User'; 
+import { Laboratory } from '../model/Laboratory';
+import { Laboratory_test } from '../model/Laboratory_test';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LaboratoryService {
+
+  constructor(private _http: HttpClient) { }
+  private $root: string = "http://clinic/"; 
+
+  $new(hisstory_id: number, request: Laboratory[]){
+    const URL = this.$root+"ajax/post/lab/request"; 
+    return this._http.post(URL , request); 
+  }
+
+  autoComplet(key: string): Observable<Laboratory_test[]>{
+    const URL = this.$root+"ajax/get/lab/search/auto/"+key; 
+    return this._http.get<Laboratory_test[]>(URL); 
+  }
+
+  search(key: string): Observable<Laboratory>{
+    const URL = this.$root+"ajax/get/lab/search/"+key; 
+    return this._http.get<Laboratory>(URL); 
+  }
+
+  request(test: Laboratory_test[], id: number){
+    const URL = this.$root+"ajax/post/lab/request";
+    return this._http.post(URL, {requests: test,hisstory_id: id} );  
+  }
+}

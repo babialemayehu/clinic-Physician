@@ -7,30 +7,58 @@
    </div>
    <div class="col m8 l9 s12">  
      <div id="show-area">
-        <mat-card *ngIf="!start" style="margin: 10%">
-          <h3 class="center">Wellcome</h3>
-          <h6 class="center">Do you want to start treatement?</h6>
-          <br>
-          <div style="width: 80%; margin:auto">
-            <app-room-number 
-            (status)="onStatus($event)" 
-            [roomNumber]="($auth)?.room_number"
-            ></app-room-number>           
+
+       <section *ngIf="state == 0">
+        <mat-card style="margin: 10%">
+          <div class="progress" [class.hide]="!loading" >
+            <div class="indeterminate"></div>
           </div>
-          
-          <div style="width: 100%; text-align: center;">
-            <button mat-flat-button color="primary" (click)="start = true">Start</button>
-          </div>
+          <div [class.form-loading]="loading">
+            <h3 class="center">Wellcome</h3>
+            <h6 class="center">Do you want to start treatement?</h6>
+            <br>
+            <div style="width: 80%; margin:auto">
+              <app-room-number 
+              (status)="onStatus($event)" 
+              [roomNumber]="($auth)?.room_number"
+              ></app-room-number>           
+            </div>
+            
+            <div style="width: 100%; text-align: center;">
+              <button mat-flat-button color="primary" (click)="next()">Start</button>
+            </div>
+          </div> 
         </mat-card>
-        <div *ngIf="start" id="main">
-          <mat-card *ngIf="start">
+       </section>
+
+       <section *ngIf="state == 1">
+          <mat-card>
             <app-patinet-view [patient]="patient"></app-patinet-view>
           </mat-card>
           <mat-card>
-            <app-history-form></app-history-form>
+            <app-history-form [hisstory]="hisstory" ></app-history-form>
+            <div class="row" id="buttons">    
+              <button mat-stroked-button color="priamry" class="right"><span>Next </span> <mat-icon>navigate_next</mat-icon></button>
+              <button mat-flat-button color="primary" class="right">Finish</button>  
+            </div>
           </mat-card> 
-        </div>
+       </section>
+       
+       <section *ngIf="state == 2">
+          <button mat-icon-button>
+            <mat-icon (click)="$back()">arrow_back</mat-icon>
+          </button>
+          <app-laboratory [hisstory]="hisstory"></app-laboratory> 
+       </section>
+
+       <section *ngIf="state == 3">
+        <button mat-icon-button>
+          <mat-icon (click)="$back()">arrow_back</mat-icon>
+        </button>
+        <app-pharmacy></app-pharmacy>
+       </section>
      </div> 
    </div>
  </div>
 </section>
+<app-floating-action-btn (action)="$state($event)"></app-floating-action-btn>

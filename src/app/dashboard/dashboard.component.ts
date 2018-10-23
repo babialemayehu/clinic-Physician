@@ -8,7 +8,9 @@ import { PatientService } from '../service/patient.service';
 import { AlertComponent } from '../alert/alert.component'; 
 import { Router, ActivatedRoute} from '@angular/router'; 
 import { User } from '../model/User';
+import { Hisstory } from '../model/Hisstory'; 
 import { UserService } from '../service/user.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -16,13 +18,15 @@ import { UserService } from '../service/user.service';
 })
 export class DashboardComponent implements OnInit {
 
-  private start = false; 
+  private state: number = 0; 
   private patient: Patient; 
   private $queue: Patient_queue; 
   private isQueued: boolean; 
   private load: number = 0; 
   private $auth: User; 
-
+  private loading: boolean = false; 
+  private hisstory: Hisstory; 
+  
   constructor(
     private _queue: PatientQueueService,
     private _patient: PatientService, 
@@ -37,6 +41,30 @@ export class DashboardComponent implements OnInit {
         this.$auth = user; 
       }
     )
+  }
+
+  next(){
+    this.loading  = true; 
+    this._queue.next().subscribe(
+      (responce) => {
+        this.loading = false; 
+        this.patient = responce.patient; 
+        this.$queue = responce; 
+        this.hisstory = responce.hisstory; 
+        this.state = 1; 
+      }, 
+      (error) => {
+        this.loading = false; 
+      }
+    )
+  }
+
+  $state(num: number){
+    this.state = num; 
+  }
+
+  $back(){
+    this.state = 1;  
   }
 
   onSearch(patient) {
