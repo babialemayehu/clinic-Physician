@@ -33,4 +33,9 @@ export class LaboratoryService {
     const URL = this.$root+"ajax/post/lab/request";
     return this._http.post(URL, {requests: test,hisstory_id: id} );  
   }
+
+  getRequests(queue_id: number): Observable<Laboratory[]>{
+    const URL  = this.$root+"ajax/get/lab/requests/"+queue_id; 
+    return this._http.get<Laboratory[]>(URL); 
+  }
 }

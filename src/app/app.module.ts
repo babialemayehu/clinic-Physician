@@ -73,6 +73,8 @@ import { RoomNumberComponent } from './room-number/room-number.component';
 import { HistoryFormComponent } from './history-form/history-form.component';
 import { LaboratoryComponent } from './laboratory/laboratory.component';
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
+import { LabResponceComponent } from './lab-responce/lab-responce.component';
+import { LeftSideComponent } from './left-side/left-side.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +109,8 @@ import { PharmacyComponent } from './pharmacy/pharmacy.component';
     HistoryFormComponent,
     LaboratoryComponent,
     PharmacyComponent,
+    LabResponceComponent,
+    LeftSideComponent,
    
     // ContextMenu,
   ],

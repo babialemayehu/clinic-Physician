@@ -40,6 +40,22 @@ export class DashboardComponent implements OnInit {
       (user) => {
         this.$auth = user; 
       }
+    ); 
+
+    this._activeRoute.params.subscribe(
+      (param) =>{
+        if(typeof param.hisstory_id !== 'undefined'){
+          this._queue.getQueue(param.hisstory_id).subscribe(
+            (responce)=> {
+              this.loading = false; 
+              this.patient = responce.patient; 
+              this.$queue = responce; 
+              this.hisstory = responce.hisstory; 
+              this.state = 1; 
+            }
+          ); 
+        }
+      }
     )
   }
 

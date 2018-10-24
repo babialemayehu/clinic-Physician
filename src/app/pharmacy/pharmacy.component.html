@@ -1,58 +1,94 @@
-<div style="width: 90%; margin:auto">
-    <mat-form-field>   
-      <input matInput [formControl]="filter" placeholder="Search requested laboratory test">    
-    </mat-form-field>
+<mat-card style="margin-top: 16px;" class="row">
+  <div class="progress" [class.hide]="!loading" >
+    <div class="indeterminate"></div>
   </div>
-   
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z2">
-   
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  
-  <mat-card style="margin-top: 16px;" class="row">
-    <h5 style="margin-left: 16px">Pharmacy</h5>
-      <div class="row" style="margin: 0px">
-        <div class="col s11 m11" style="padding-right: 0px">
+  <div [class.form-loading]="loading" style="padding: 0 1em">
+    <h5 style="margin-left: 16px">Drug prescription</h5>
+    <form action="" [formGroup]="add">
+      <div class="row" style="margin: 0px 1.5em; ">
+        <div class="col s12 m5" style="padding-right: 0px">
           <mat-form-field>   
-            <input matInput [formControl]="add" placeholder="Laboratory test name">    
+            <input matInput [formControl]="name" placeholder="Drug" [matAutocomplete]="auto">    
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let drug of drugAuto" [value]="drug.name" (click)="$add(drug)">
+                {{ drug.name }}
+              </mat-option>
+            </mat-autocomplete>
           </mat-form-field>
         </div>
-        <div class="col s1 m1" style="padding-left: 0px">
-          <button mat-icon-button>
-            <mat-icon>add</mat-icon>
-          </button>
+        
+        <div class="col s5 m2" style="padding-right: 0px">
+          <mat-form-field>   
+            <input matInput [formControl]="dosage" placeholder="Dosage">    
+          </mat-form-field>
+        </div>
+        <div class="col s5 m2" style="padding-right: 0px">
+          <mat-form-field>   
+            <input matInput [formControl]="frequency" placeholder="Frequency">    
+          </mat-form-field>
+        </div>
+        <div class="col s5 m2">
+          <mat-form-field>
+            <mat-select [formControl]="root" placeholder="Root">
+              <mat-option value="1">OI</mat-option>    
+              <mat-option value="2">IV</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col s2 m1" style="padding-right: 0px"> 
+          <button mat-icon-button class="primary white-text">
+            <mat-icon style="line-height: 20px">arrow_downward</mat-icon>
+          </button> 
         </div>
       </div>
+    </form>
+    
+
+    <div *ngIf="drugs.length == 0">
+      <div style="text-align: center"><strong><b>No drugs are prescribed yet</b></strong></div>
+    </div>
+
+    <div *ngIf="drugs.length > 0">
+      <div style="width: 90%; margin:auto" *ngIf="drugs.length > 2"> 
+        <mat-form-field>   
+          <input matInput [formControl]="filter" placeholder="Search requested laboratory drug">    
+        </mat-form-field>
+      </div>
+      
+      <table mat-table [dataSource]="drugDataSource" 
+      class="mat-elevation-z0">
+      
+        <!-- number Column -->
+        <ng-container matColumnDef="no">
+            <th mat-header-cell *matHeaderCellDef> No </th>
+            <td mat-cell *matCellDef="let drug"> {{drugs.indexOf(drug)+1}} </td>
+          </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let drug"> {{drug.name}} </td>
+        </ng-container>
+
+        <!-- icon Column -->
+        <ng-container matColumnDef="icon">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let drug" style="text-align: right">
+            <button mat-icon-button class="danger-text" (click)="remove(drug)">
+              <mat-icon>remove_circle_outline</mat-icon>
+            </button>  
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
       <div id='#buttons' style="margin-top: 8px;margin-right: 36px" class="right">
         <button mat-flat-button (click)="send()">
           <span>SEND </span>
           <mat-icon>send</mat-icon>
         </button>
       </div>
-  </mat-card>
-  
+    </div>
+  </div>
+</mat-card>

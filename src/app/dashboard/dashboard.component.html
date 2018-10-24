@@ -1,9 +1,7 @@
 <section>
  <div class="row">
    <div class="col m4 l3 s12">
-     <mat-card id="queue">
-       <app-queue-min [loadTriggr]="load"></app-queue-min>
-      </mat-card>
+      <app-left-side></app-left-side>
    </div>
    <div class="col m8 l9 s12">  
      <div id="show-area">
@@ -48,7 +46,7 @@
           <button mat-icon-button>
             <mat-icon (click)="$back()">arrow_back</mat-icon>
           </button>
-          <app-laboratory [hisstory]="hisstory"></app-laboratory> 
+          <app-laboratory [queue]="$queue"></app-laboratory> 
        </section>
 
        <section *ngIf="state == 3">
@@ -61,4 +59,6 @@
    </div>
  </div>
 </section>
-<app-floating-action-btn (action)="$state($event)"></app-floating-action-btn>
+<div [hidden]="state == 0">
+  <app-floating-action-btn (action)="$state($event)" ></app-floating-action-btn>
+</div>

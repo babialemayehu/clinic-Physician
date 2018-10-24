@@ -1,44 +1,10 @@
-<div *ngIf="tests.length == 0">
-  <mat-card style="text-align: center"><strong><b>No tests are requested yet</b></strong></mat-card>
-</div>
-<div *ngIf="tests.length > 0">
-  <div style="width: 90%; margin:auto" *ngIf="tests.length > 2"> 
-    <mat-form-field>   
-      <input matInput [formControl]="filter" placeholder="Search requested laboratory test">    
-    </mat-form-field>
-  </div>
-  
-  <table mat-table [dataSource]="testDatasource" class="mat-elevation-z2">
-    <!-- number Column -->
-    <ng-container matColumnDef="no">
-        <th mat-header-cell *matHeaderCellDef> No </th>
-        <td mat-cell *matCellDef="let test"> {{tests.indexOf(test)+1}} </td>
-      </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let test"> {{test.name}} </td>
-    </ng-container>
-
-     <!-- icon Column -->
-     <ng-container matColumnDef="icon">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let test" style="text-align: right">
-        <button mat-icon-button class="danger-text" (click)="remove(test)">
-          <mat-icon>remove_circle_outline</mat-icon>
-        </button>  
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-</div>
-
 <mat-card style="margin-top: 16px;" class="row">
-  <h5 style="margin-left: 16px">Laboratory</h5>
-    <div class="row" style="margin: 0px">
+  <div class="progress" [class.hide]="!loading" >
+    <div class="indeterminate"></div>
+  </div>
+  <div [class.form-loading]="loading" style="padding: 0 1em">
+    <h5 style="margin-left: 16px">New Laboratory Request</h5>
+    <div class="row" style="margin: 0px 1.5em; ">
       <div class="col s11 m11" style="padding-right: 0px">
         <mat-form-field>   
           <input matInput [formControl]="add" placeholder="Laboratory test name" [matAutocomplete]="auto">    
@@ -55,10 +21,52 @@
         </button>
       </div>
     </div>
-    <div id='#buttons' style="margin-top: 8px;margin-right: 36px" class="right">
-      <button mat-flat-button (click)="send()">
-        <span>SEND </span>
-        <mat-icon>send</mat-icon>
-      </button>
+
+    <div *ngIf="tests.length == 0">
+      <div style="text-align: center"><strong><b>No tests are requested yet</b></strong></div>
     </div>
+
+    <div *ngIf="tests.length > 0">
+      <div style="width: 90%; margin:auto" *ngIf="tests.length > 2"> 
+        <mat-form-field>   
+          <input matInput [formControl]="filter" placeholder="Search requested laboratory test">    
+        </mat-form-field>
+      </div>
+      
+      <table mat-table [dataSource]="testDatasource" 
+      class="mat-elevation-z0">
+      
+        <!-- number Column -->
+        <ng-container matColumnDef="no">
+            <th mat-header-cell *matHeaderCellDef> No </th>
+            <td mat-cell *matCellDef="let test"> {{tests.indexOf(test)+1}} </td>
+          </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let test"> {{test.name}} </td>
+        </ng-container>
+
+        <!-- icon Column -->
+        <ng-container matColumnDef="icon">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let test" style="text-align: right">
+            <button mat-icon-button class="danger-text" (click)="remove(test)">
+              <mat-icon>remove_circle_outline</mat-icon>
+            </button>  
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <div id='#buttons' style="margin-top: 8px;margin-right: 36px" class="right">
+        <button mat-flat-button (click)="send()">
+          <span>SEND </span>
+          <mat-icon>send</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
 </mat-card>

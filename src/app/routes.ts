@@ -7,9 +7,11 @@ import { ChangePasswordRouteComponent } from './change-password-route/change-pas
 import { QueueComponent } from './queue/queue.component'; 
 import { VisitsComponent } from './visits/visits.component';
 import { RouteComponent as UploadProfile } from './upload_profile_pic/route/route.component'; 
+import { LabResponceComponent } from './lab-responce/lab-responce.component';
 
 export const appRoutes: Routes = [
     {path: '', component: DashboardComponent },
+    {path: 'hisstory/:hisstory_id', component: DashboardComponent }, 
     {path: 'users', component: UsersComponent },
     {path: 'settings', component: SettingsComponent }, 
     //{path: ':worker_id', component: UserProfileRouteComponent}, 
@@ -18,4 +20,5 @@ export const appRoutes: Routes = [
     {path: 'search/:reg_id', component: DashboardComponent}, 
     {path: 'settings/change profile picture', component: UploadProfile },
     {path: 'settings/change password', component: ChangePasswordRouteComponent },
+    {path: 'lab/requests/:queue_id', component: LabResponceComponent}
 ]; 
