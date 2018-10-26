@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { User } from '../model/User'; 
 import { Hisstory } from '../model/Hisstory';
+import { Diagnosis } from '../model/Diagnosis';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,12 @@ export class HisstoryService {
   }
 
   metrix(hisstory_id: number, matrix: Hisstory){
-    console.log(matrix); 
     const URL = this.$root+"ajax/update/hisstory/metrics/"+hisstory_id; 
     return this._http.put(URL, matrix); 
+  }
+
+  getDiagnosises(key: string): Observable<Diagnosis[]>{
+    const URL = this.$root+"ajax/get/diagnosises/search/auto/"+key; 
+    return this._http.get<Diagnosis[]>(URL); 
   }
 }

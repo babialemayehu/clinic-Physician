@@ -53,4 +53,9 @@ export class PatientQueueService {
     const URL = this.root+"/ajax/get/queue/get/"+queue_id; 
     return this._http.get<Patient_queue>(URL); 
   }
+
+  saved(): Observable<Patient_queue[]>{
+    const URL = this.root+"/ajax/get/queue/saved";
+    return this._http.get<Patient_queue[]>(URL); 
+  }
 }

@@ -1,0 +1,17 @@
+<section class="container">
+  <div class="row">
+    <div class="row">
+      <mat-form-field>
+        <input matInput [formControl]="input" type="text" placeholder="Diagnosises" [matAutocomplete]="auto">
+      </mat-form-field>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let diagnosis of autoDiagnosis" [value]="diagnosis.name" (click)="selet(diagnosis)">
+          {{diagnosis.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+    
+    <button mat-button class="right">Next <mat-icon>navigate_next</mat-icon></button>
+    <button mat-flat-button color="primary" class="right" style="margin-right: 1em;">Finish</button>
+  </div>
+</section>

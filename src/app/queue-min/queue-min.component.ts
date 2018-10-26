@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class QueueMinComponent implements OnInit {
 
   private queues: Patient_queue[] = []; 
-
+  
   private options: Options[] = [
     {icon: "", text: "one", value: 1, data: ""}, 
     {icon: "", text: "two", value: 2, data: ""}, 

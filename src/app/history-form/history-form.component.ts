@@ -13,9 +13,7 @@ export class HistoryFormComponent implements OnInit {
   private form: FormGroup; 
   @Input() hisstory: Hisstory; 
   
-  constructor(private _form: FormBuilder,private _hisstory: HisstoryService) { }
-
-  ngOnInit() {
+  constructor(private _form: FormBuilder,private _hisstory: HisstoryService) { 
     this.form = this._form.group({
       id: [""],
       patient_queue_id: [""],
@@ -23,15 +21,21 @@ export class HistoryFormComponent implements OnInit {
       created_at: [""], 
       updated_at: [""], 
       deleted_at: [""], 
-      chief_complaint: ["", Validators.required], 
+      chief_complaint: [""], 
       temprature: ["1"], 
       BP: [""], 
       puls_rate: [""], 
       respiratory_rate: [""]
     }); 
+  }
+
+  ngOnChanges(){
+
     this.form.patchValue(this.hisstory); 
+  }
+  ngOnInit() { 
     this.form.valueChanges.subscribe(
-      (value)=> {console.log(value); }
+      (value)=> {}
     )
   }
 
@@ -41,10 +45,8 @@ export class HistoryFormComponent implements OnInit {
   }
 
   $metrix(){
-    console.log(this.form.value); 
     this._hisstory.metrix(this.hisstory.id, this.form.value)
     .subscribe(); 
-    console.log("lajsd"); 
   }
   get chief_complaint(){ return this.form.get('chief_complaint');}
   get temprature(){ return this.form.get('temprature');}

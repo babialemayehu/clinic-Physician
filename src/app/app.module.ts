@@ -75,6 +75,8 @@ import { LaboratoryComponent } from './laboratory/laboratory.component';
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
 import { LabResponceComponent } from './lab-responce/lab-responce.component';
 import { LeftSideComponent } from './left-side/left-side.component';
+import { SavedStatesComponent } from './saved-states/saved-states.component';
+import { DiagnosisComponent } from './diagnosis/diagnosis.component';
 
 @NgModule({
   declarations: [
@@ -111,6 +113,8 @@ import { LeftSideComponent } from './left-side/left-side.component';
     PharmacyComponent,
     LabResponceComponent,
     LeftSideComponent,
+    SavedStatesComponent,
+    DiagnosisComponent,
    
     // ContextMenu,
   ],
@@ -147,7 +151,8 @@ import { LeftSideComponent } from './left-side/left-side.component';
     // ContextMenu, 
     ContextMenuComponent,
     UserProfileModalComponent,
-    SetupDialogComponent
+    SetupDialogComponent,
+    DiagnosisComponent
 
   ], 
   providers: [

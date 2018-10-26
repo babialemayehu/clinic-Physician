@@ -3,13 +3,21 @@
       <i class="large material-icons">add</i>
     </a>
     <ul>
-      <li><a class="btn-floating red"><i class="material-icons">perm_identity</i></a></li>
-      <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-      <li (click)="$action(2)"><a class="btn-floating green">
-        <img src="assets/drug.svg" style="width: 1.4rem; margin-top: 9px"/>
-      </a></li>
-      <li (click)="$action(1)"><a class="btn-floating blue modal-trigger" >
-        <img src="assets/flask-full.svg" style="width: 1.3rem; margin-top: 10px"/></a>
+      <li><a class="btn-floating red"><i class="material-icons">perm_identity</i></a></li>    
+      <li (click)="action.emit(2)">
+        <a class="btn-floating yellow">
+          <img src="assets/drug.svg" style="width: 1.4rem; margin-top: 9px"/>
+        </a>
+      </li>
+      <li (click)="action.emit(3)">
+        <a class="btn-floating green modal-trigger" >
+          <img src="assets/flask-full.svg" style="width: 1.3rem; margin-top: 10px"/>
+        </a>
+      </li>
+      <li (click)="action.emit(4)">
+        <a class="btn-floating blue darken-1">
+          <i class="material-icons">navigate_next</i>
+        </a>
       </li>
     </ul>
 </div>

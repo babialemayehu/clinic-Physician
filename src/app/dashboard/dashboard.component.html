@@ -1,11 +1,13 @@
 <section>
  <div class="row">
    <div class="col m4 l3 s12">
-      <app-left-side></app-left-side>
+      <mat-card id="queue">
+        <app-queue-min [loadTriggr]="update.queue"></app-queue-min>
+      </mat-card>
    </div>
    <div class="col m8 l9 s12">  
      <div id="show-area">
-
+<!-- STATE 0 -->
        <section *ngIf="state == 0">
         <mat-card style="margin: 10%">
           <div class="progress" [class.hide]="!loading" >
@@ -28,32 +30,55 @@
           </div> 
         </mat-card>
        </section>
-
+<!-- STATE 1 -->
        <section *ngIf="state == 1">
-          <mat-card>
-            <app-patinet-view [patient]="patient"></app-patinet-view>
-          </mat-card>
-          <mat-card>
+         <div class="row">
+           <div class="col m7 s12">
+            <mat-card>
+              <app-patinet-view [patient]="patient"></app-patinet-view>
+            </mat-card>
+          </div>
+          <div class="col m5 s12">
+            <mat-card>
+              <app-recent-visits [patient]="patient" icon="launch"></app-recent-visits>
+            </mat-card>
+          </div>
+         </div>    
+          <mat-card class="row">
             <app-history-form [hisstory]="hisstory" ></app-history-form>
             <div class="row" id="buttons">    
-              <button mat-stroked-button color="priamry" class="right"><span>Next </span> <mat-icon>navigate_next</mat-icon></button>
-              <button mat-flat-button color="primary" class="right">Finish</button>  
+              <!-- <button mat-stroked-button (click)="next()" color="priamry" class="right"><span>Next </span> <mat-icon>navigate_next</mat-icon></button> -->
+              <button mat-flat-button (click)="finish()" color="primary" class="right">Finish</button>  
             </div>
           </mat-card> 
        </section>
-       
+<!-- STATE 2    -->
        <section *ngIf="state == 2">
           <button mat-icon-button>
             <mat-icon (click)="$back()">arrow_back</mat-icon>
           </button>
-          <app-laboratory [queue]="$queue"></app-laboratory> 
+          <app-laboratory [queue]="$queue" ></app-laboratory> 
        </section>
-
+<!-- STATE 3 -->
        <section *ngIf="state == 3">
-        <button mat-icon-button>
-          <mat-icon (click)="$back()">arrow_back</mat-icon>
-        </button>
-        <app-pharmacy></app-pharmacy>
+          <button mat-icon-button>
+            <mat-icon (click)="$back()">arrow_back</mat-icon>
+          </button>
+          <app-pharmacy [queue]="$queue" (status)="$state($event) "></app-pharmacy>
+       </section>
+<!-- STATE 5  -->
+       <section *ngIf="state == 5">
+          <mat-card style="margin: 15%;">
+            <div class="container">
+              <div class="row">
+                  <div class="center" style="width: 100%; opacity: 0.8">
+                    <h6><strong class="secondery center">
+                      <B>There is no patient in the queue. <br>You will be notified when new patient arrived</B>
+                    </strong></h6>
+                  </div>
+              </div>
+            </div>
+          </mat-card>
        </section>
      </div> 
    </div>
@@ -62,3 +87,8 @@
 <div [hidden]="state == 0">
   <app-floating-action-btn (action)="$state($event)" ></app-floating-action-btn>
 </div>
+<app-saved-states 
+[activeQueueId]="($queue)?.id"
+[update] = 'update.states'
+(open) = "open($event)"
+></app-saved-states>

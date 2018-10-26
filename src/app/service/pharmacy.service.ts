@@ -20,7 +20,7 @@ export class PharmacyService {
   }
 
   prescribe(hisstroy_id, prescriptions): Observable<Prescription[]>{
-    const URL = this.$root+"ajax/get/pharmacy/prescription/prescribe/"+hisstroy_id; 
+    const URL = this.$root+"ajax/post/pharmacy/prescription/prescribe/"+hisstroy_id; 
     return this._http.post<Prescription[]>(URL, {prescriptions: prescriptions}); 
   }
 

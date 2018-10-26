@@ -25,6 +25,7 @@
     "@ctrl/ngx-rightclick": "^1.1.2",
     "@types/string": "0.0.29",
     "core-js": "^2.5.4",
+    "material-icons": "^0.2.3",
     "materialize-css": "^1.0.0",
     "rxjs": "^6.0.0",
     "string": "^3.3.3",

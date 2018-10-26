@@ -37,18 +37,4 @@ export class FloatingActionBtnComponent implements OnInit {
     );
   }
 
-  /**
-   * 1 for pahrmaccy
-   * 2 for laboratory
-   */
-  $action(action: number){
-    switch(action){
-      case 1: 
-      this.action.emit(2);
-      break; 
-      case 2:
-      this.action.emit(3); 
-      break; 
-    }
-  }
 }
