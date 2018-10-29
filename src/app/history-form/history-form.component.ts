@@ -17,7 +17,6 @@ export class HistoryFormComponent implements OnInit {
     this.form = this._form.group({
       id: [""],
       patient_queue_id: [""],
-      diagnosis_id: [""],
       created_at: [""], 
       updated_at: [""], 
       deleted_at: [""], 

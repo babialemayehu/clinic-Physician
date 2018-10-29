@@ -70,7 +70,7 @@ export class LaboratoryComponent implements OnInit {
         this.loading = false; 
         this.tests = []; 
         this.testDatasource.data = this.tests; 
-        this._route.navigate(['/lab/requests/'+this.queue.id]); 
+        this._route.navigate(['/lab/result/'+this.queue.id]); 
       }
     )
   }

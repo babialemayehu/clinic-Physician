@@ -4,6 +4,9 @@ import { Diagnosis } from '../model/Diagnosis';
 import { FormControl } from '@angular/forms';
 import { Hisstory } from '../model/Hisstory';
 import { HisstoryService } from '../service/hisstory.service';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatAutocompleteSelectedEvent, MatChipInputEvent, MatAutocomplete} from '@angular/material';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-diagnosis',
@@ -15,7 +18,12 @@ export class DiagnosisComponent implements OnInit {
   private autoDiagnosis: Diagnosis[] = []; 
   private fullDiagnosis: Diagnosis[] = []; 
   private input: FormControl = new FormControl(); 
-  private selected: Diagnosis[]; 
+  private selected: Diagnosis[] = []; 
+  private visible = true;
+  private selectable = true;
+  private removable = true;
+  private addOnBlur = false;
+  private separatorKeysCodes: number[] = [ENTER, COMMA];
 
   constructor(
     private thisDialog: MatDialogRef<DiagnosisComponent>, 
@@ -33,7 +41,6 @@ export class DiagnosisComponent implements OnInit {
   ngOnInit() {
     this.input.valueChanges.subscribe(
       (key) => {
-        console.log(key); 
         if(key == "") this.autoDiagnosis = this.fullDiagnosis; 
         else
           this._hisstory.getDiagnosises(key).subscribe(
@@ -46,7 +53,32 @@ export class DiagnosisComponent implements OnInit {
   }
 
   select(diagnosis: Diagnosis){
-    this.selected.push(diagnosis); 
+    if(this.selected.find((e)=> { return e.name == diagnosis.name }) === undefined)
+      this.selected.push(diagnosis);
+    this.autoDiagnosis = this.fullDiagnosis;  
+    this.input.reset(); 
   }
 
+  remove(diagnosis: Diagnosis){
+    this.selected.splice(this.selected.indexOf(diagnosis),1); 
+  }
+
+  onFocus(){
+    if(this.input.value == ''){
+      this.autoDiagnosis = this.fullDiagnosis; 
+    }
+  }
+
+  close(message){
+    this.submit(); 
+    this.thisDialog.close(message); 
+  }
+
+  submit(){
+    this._hisstory.diagnosises(this.data.queue.hisstory_id, this.selected).subscribe(
+      (responce) => {
+        console.log(responce); 
+      }
+    )
+  }
 }

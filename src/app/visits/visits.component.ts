@@ -3,6 +3,7 @@ import { MatPaginator, MatSort } from '@angular/material';
 import { VisitsDataSource } from './visits-datasource';
 import { PatientQueueService } from '../service/patient-queue.service'; 
 import { ActivatedRoute } from '@angular/router';
+import { Patient_queue } from '../model/Patient_queue';
 
 @Component({
   selector: 'app-visits',
@@ -14,10 +15,11 @@ export class VisitsComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   dataSource: VisitsDataSource;
 
-  displayedColumns = ['date', 'physician'];
+  displayedColumns = ['no', 'date', 'physician', 'diagnosis'];
   private loaded = false; 
   private error = false; 
-
+  private hisstories: Patient_queue[] = [];
+  
   constructor(private _queue: PatientQueueService, private _activeRoute:ActivatedRoute){}
   ngOnInit() {
     this.dataSource = new VisitsDataSource(this.paginator, this.sort , []);
@@ -28,6 +30,7 @@ export class VisitsComponent implements OnInit {
             this.dataSource = new VisitsDataSource(this.paginator, this.sort, responce); 
             this.loaded = true; 
             this.error = false; 
+            this.hisstories = responce; 
           }, 
           error => {
             this.loaded = true; 
@@ -36,5 +39,9 @@ export class VisitsComponent implements OnInit {
         )
       }
     )
+  }
+
+  num(hisstory){
+    return this.hisstories.indexOf(hisstory)+1; 
   }
 }

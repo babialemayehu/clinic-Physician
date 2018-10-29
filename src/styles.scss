@@ -26,6 +26,7 @@ button:focus{ background: darken($color: #ddd, $amount: 0.1)}
 .danger-text{ color: mat-color($warn, 500)}
 //  Text topography
 .secondery{ color: lighten(#555, .5)}
+.tertiary{ color: lighten(#999, .1)}
 .small { font-size: .8em !important }
 .larg-text { font-size: 1.3em }
 

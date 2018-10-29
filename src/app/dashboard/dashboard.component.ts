@@ -26,9 +26,12 @@ export class DashboardComponent implements OnInit {
   private $auth: User; 
   private loading: boolean = false; 
   private hisstory: Hisstory; 
+  private queueChecker;
+
   private update = {
     state: 0, 
-    queue: 0
+    queue: 0, 
+    stateNext: 0
   }; 
   constructor(
     private _queue: PatientQueueService,
@@ -64,12 +67,19 @@ export class DashboardComponent implements OnInit {
     this.loading  = true; 
     this._queue.next().subscribe(
       (responce) => {
-        this.loading = false; 
+        this.loading = false;
         this.open(responce); 
       }, 
       (error) => {
         this.loading = false; 
         this.state = 5; 
+        this.queueChecker = setInterval(()=>{
+          this._queue.isEmpty().subscribe(
+            (isEmpty) => {
+              this.state = (isEmpty == true)?5:6; 
+            }
+          )
+        }, 10000); 
       }
     )
     this.update.state++;
@@ -77,17 +87,35 @@ export class DashboardComponent implements OnInit {
   }
 
   open(queue: Patient_queue){
-    this.patient = queue.patient; 
-    this.$queue = queue; 
-    this.hisstory = queue.hisstory; 
-    this.state = 1; 
+    if(this.queueChecker != undefined) 
+      clearInterval(this.queueChecker); 
+    if(queue){
+      this.patient = queue.patient; 
+      this.$queue = queue; 
+      this.hisstory = queue.hisstory; 
+      this.state = 1; 
+    }else{
+      this.state = 7; 
+    }
+    
+  }
+
+  call(){
+    this._queue.call(this.$queue.id).subscribe(
+      (Response) => {}
+    )
   }
   $state(num: number){ 
-    if(num == 4) this.next(); 
-    else{
-      this.state = num;
+    switch(num){
+      case 4: 
+        this.next(); 
+      break; 
+      case 9: 
+        this.call(); 
+      break; 
+      default: 
+      this.state = num; 
     }
-
    }
 
   finish(){
@@ -101,7 +129,14 @@ export class DashboardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       (response) => {
-        console.log(); 
+        switch(response){
+          case 'next': 
+            this.next(); 
+            break; 
+          case 'finish': 
+            this.update.stateNext++; 
+            break; 
+        } 
       }
     )
   }

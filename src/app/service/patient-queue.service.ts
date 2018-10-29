@@ -58,4 +58,14 @@ export class PatientQueueService {
     const URL = this.root+"/ajax/get/queue/saved";
     return this._http.get<Patient_queue[]>(URL); 
   }
+
+  isEmpty(): Observable<boolean>{
+    const URL = this.root+"/ajax/get/queue/isEmpty"; 
+    return this._http.get<boolean>(URL); 
+  }
+
+  call(queue_id: number): Observable<boolean>{
+    const URL = this.root+"/ajax/post/queue/call/"+queue_id; 
+    return this._http.post<boolean>(URL, {}); 
+  }
 }

@@ -1,17 +1,41 @@
 <section class="container">
   <div class="row">
+    <h5>Diagnosis</h5>
     <div class="row">
       <mat-form-field>
-        <input matInput [formControl]="input" type="text" placeholder="Diagnosises" [matAutocomplete]="auto">
+        <mat-chip-list #chipList>
+          <mat-chip
+            *ngFor="let diagnosis of selected"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="remove(diagnosis)">
+            {{diagnosis.name}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+<!--  -->
+<!--  -->
+        <input matInput 
+        [formControl]="input" 
+        type="text" 
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"      
+        [matChipInputAddOnBlur]="addOnBlur"
+        >
+        <!-- [matChipInputSeparatorKeyCodes]="separatorKeysCodes" -->
+<!-- (matChipInputTokenEnd)="add($event)" -->
       </mat-form-field>
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let diagnosis of autoDiagnosis" [value]="diagnosis.name" (click)="selet(diagnosis)">
+        <mat-option 
+          *ngFor="let diagnosis of autoDiagnosis" 
+          [value]="diagnosis.name" 
+          (click)="select(diagnosis)">
           {{diagnosis.name}}
         </mat-option>
       </mat-autocomplete>
     </div>
     
-    <button mat-button class="right">Next <mat-icon>navigate_next</mat-icon></button>
-    <button mat-flat-button color="primary" class="right" style="margin-right: 1em;">Finish</button>
+    <button mat-button (click)="close('next')" class="right">Next <mat-icon>navigate_next</mat-icon></button>
+    <button mat-flat-button (click)="close('finish')" color="primary" class="right" style="margin-right: 1em;">Finish</button>
   </div>
 </section>

@@ -75,20 +75,57 @@
                     <h6><strong class="secondery center">
                       <B>There is no patient in the queue. <br>You will be notified when new patient arrived</B>
                     </strong></h6>
+                    
                   </div>
               </div>
             </div>
           </mat-card>
        </section>
+<!-- STATE 6  -->
+      <section *ngIf="state == 6">
+          <mat-card style="margin: 15%;">
+            <div class="container">
+              <div class="row">
+                <div class="center" style="width: 100%; opacity: 0.8">
+                  <h6><strong class="secondery center">
+                    <B>New patient arrived</B>
+                  </strong></h6>
+                </div>
+              </div>
+              <div class=" center">
+                <button mat-flat-button (click)="next()">Accept</button> 
+              </div>
+            </div>
+          </mat-card>
+      </section>
+<!-- STATE 7  -->
+    <section *ngIf="state == 7">
+      <mat-card style="margin: 15%;">
+        <div class="container">
+          <div class="row">
+              <div class="center" style="width: 100%; opacity: 0.8">
+                <h6><strong class="secondery center">
+                  <B>You have finished all of your cases <br><span class="small">Plase click next if you want to accept another patient</span></B>
+                </strong></h6>
+                
+              </div>
+          </div>
+          <div class=" center">
+            <button mat-flat-button color="primary" (click)="next()">next <mat-icon>navigate_next</mat-icon></button> 
+          </div>
+        </div>
+      </mat-card>
+    </section>
      </div> 
    </div>
  </div>
 </section>
-<div [hidden]="state == 0">
+<div [hidden]="state == 0 || state == 5">
   <app-floating-action-btn (action)="$state($event)" ></app-floating-action-btn>
 </div>
 <app-saved-states 
 [activeQueueId]="($queue)?.id"
 [update] = 'update.states'
+[next] = 'update.stateNext'
 (open) = "open($event)"
 ></app-saved-states>

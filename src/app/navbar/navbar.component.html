@@ -1,7 +1,7 @@
 <nav class="primary" >
   <div class="container">
       <div class="nav-wrapper">
-          <a href="#" class="brand-logo">DMU Clinic</a>
+          <a routerLink="/" class="brand-logo">DMU Clinic</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li *ngFor="let item of menuItems"><a [href]="item.href">{{item.text}}</a></li>
           </ul>

@@ -8,22 +8,20 @@
         <mat-card style="width: 90; margin: auto">
           <button mat-icon-button [routerLink]="'/hisstory/'+queue_id"><mat-icon>arrow_back</mat-icon></button>
           <h5 style="margin-left: 3em; display: inline">Laboratory Requests</h5>
-          <table mat-table [dataSource]="requestDatasource" 
+          <app-lab-result [tests]="requests"></app-lab-result>
+          <!-- <table mat-table [dataSource]="requestDatasource" 
           class="mat-elevation-z0">
 
-            <!-- number Column -->
             <ng-container matColumnDef="no">
                 <th mat-header-cell *matHeaderCellDef> No </th>
                 <td mat-cell *matCellDef="let request"> {{requests.indexOf(request)+1}} </td>
               </ng-container>
 
-            <!-- Name Column -->
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef> Name </th>
               <td mat-cell *matCellDef="let request"> {{request.laboratory_test.name}} </td>
             </ng-container>
 
-            <!-- Normality Column -->
             <ng-container matColumnDef="normality">
               <th mat-header-cell *matHeaderCellDef> Normality </th>
               <td mat-cell *matCellDef="let request">
@@ -36,13 +34,11 @@
               </td>
             </ng-container>
 
-              <!-- Name Column -->
             <ng-container matColumnDef="value">
               <th mat-header-cell *matHeaderCellDef> Value </th>
               <td mat-cell *matCellDef="let request"> {{request.value }} </td>
             </ng-container>
 
-            <!-- Name Column -->
             <ng-container matColumnDef="note">
               <th mat-header-cell *matHeaderCellDef> Note </th>
               <td mat-cell *matCellDef="let request"> {{request.note}} </td>
@@ -50,7 +46,7 @@
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
+          </table> -->
         </mat-card>
       </div>    
   </div>

@@ -40,7 +40,7 @@ import {
   MatAutocompleteModule, 
   MatDatepickerModule,
   MatNativeDateModule,
-
+  MatChipsModule, 
 } from '@angular/material';
 import { UsersComponent } from './users/users.component';
 
@@ -77,6 +77,9 @@ import { LabResponceComponent } from './lab-responce/lab-responce.component';
 import { LeftSideComponent } from './left-side/left-side.component';
 import { SavedStatesComponent } from './saved-states/saved-states.component';
 import { DiagnosisComponent } from './diagnosis/diagnosis.component';
+import { ViewHisstoryComponent } from './view-hisstory/view-hisstory.component';
+import { LabResultComponent } from './lab-result/lab-result.component';
+import { PrescriptionComponent } from './prescription/prescription.component';
 
 @NgModule({
   declarations: [
@@ -115,6 +118,9 @@ import { DiagnosisComponent } from './diagnosis/diagnosis.component';
     LeftSideComponent,
     SavedStatesComponent,
     DiagnosisComponent,
+    ViewHisstoryComponent,
+    LabResultComponent,
+    PrescriptionComponent,
    
     // ContextMenu,
   ],
@@ -144,6 +150,7 @@ import { DiagnosisComponent } from './diagnosis/diagnosis.component';
     ContextMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatChipsModule,
   ],
   entryComponents: [
     RegisterationFormComponent, 

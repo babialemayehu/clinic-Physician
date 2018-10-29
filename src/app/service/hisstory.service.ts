@@ -29,4 +29,14 @@ export class HisstoryService {
     const URL = this.$root+"ajax/get/diagnosises/search/auto/"+key; 
     return this._http.get<Diagnosis[]>(URL); 
   }
+
+  diagnosises(hisstory_id: number, diagnosises: Diagnosis[]): Observable<Diagnosis[]>{
+    const URL = this.$root + "ajax/post/diagnosises/new/"+hisstory_id; 
+    return this._http.post<Diagnosis[]>(URL, {diagnosises: diagnosises}); 
+  }
+
+  viewHisstroy(queue_id: number): Observable<Hisstory>{
+    const URL  = this.$root + "ajax/get/hisstory/view/"+queue_id; 
+    return this._http.get<Hisstory>(URL); 
+  }
 }

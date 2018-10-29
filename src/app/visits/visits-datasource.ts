@@ -5,6 +5,7 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 import { Patient_queue } from '../model/Patient_queue'; 
 
 export class VisitsDataSource extends DataSource<Patient_queue> {
+ 
 
   constructor(private paginator: MatPaginator, private sort: MatSort, private data: Patient_queue[]) {
     super();

@@ -1,0 +1,80 @@
+<section>
+  <div class="row" *ngIf="(hisstory)?true:false">
+    <div class="col m8 s12 offset-m2">
+      <div class="row">
+        <mat-card>
+          <!-- <h5>History</h5> -->
+          <div class="container">
+              <div class="row">
+                  <h6><strong>Chif complient</strong></h6>
+                  <p *ngIf="hisstory.chief_complaint">{{hisstory.chief_complaint}}</p>
+                  <p *ngIf="!hisstory.chief_complaint" class="secondery" style="opacity: 0.3"><b>No complaint</b></p>
+              </div>
+              <div class="row">
+                  <div class="col m3">
+                    <div class="col s4">
+                        <img src="assets/thermometer.svg" style="width: 1.4rem; margin-top: 9px"/>
+                    </div>
+                    <div class="col s8">
+                      <p>Temprature</p>
+                      <h5 *ngIf="hisstory.temprature">{{hisstory.temprature}}oC</h5>
+                      <h6 *ngIf="!hisstory.temprature" class="secondery">Not mesured</h6>
+                    </div>
+                    
+                  </div>
+                  <div class="col m3">
+                      <div class="col s4">
+                          <img src="assets/thermometer.svg" style="width: 1.4rem; margin-top: 9px"/>
+                      </div>
+                      <div class="col s8">
+                        <p>BP</p>
+                        <h5 *ngIf="hisstory.BP">{{hisstory.BP}}</h5>
+                        <h6 *ngIf="!hisstory.BP" class="secondery">Not mesured</h6>
+                      </div>
+                    
+                  </div>
+                  <div class="col m3">
+                      <div class="col s4">
+                          <img src="assets/thermometer.svg" style="width: 1.4rem; margin-top: 9px"/>
+                      </div>
+                      <div class="col s8">
+                        <p>Puls rate</p>
+                        <h5 *ngIf="hisstory.puls_rate">{{hisstory.puls_rate}}</h5>
+                        <h6 *ngIf="!hisstory.puls_rate" class="secondery">Not mesured</h6>
+                      </div>                
+                  </div>
+                  <div class="col m3">
+                      <div class="col s4">
+                          <img src="assets/thermometer.svg" style="width: 1.4rem; margin-top: 9px"/>
+                      </div>
+                      <div class="col s8">
+                        <p>Respiratory rate</p>
+                        <h5 *ngIf="hisstory.respiratory_rate">{{hisstory.respiratory_rate}}</h5>
+                        <h6 *ngIf="!hisstory.respiratory_rate" class="secondery">Not mesured</h6>
+                      </div>
+                     
+                  </div>
+              </div>   
+          </div>     
+        </mat-card>
+      </div>
+
+      <div class="row">  
+        <mat-card>
+          <h5>Laboratory results</h5>
+          <app-lab-result [tests]="(hisstory)?.labResults"></app-lab-result>
+        </mat-card>
+      </div>
+
+      <div class="row">
+        <mat-card>
+          <h5>Prescription</h5>
+          <app-prescription [prescriptions]="(hisstory)?.prescriptions "></app-prescription>
+        </mat-card>
+      </div>
+       
+     
+      
+    </div>
+  </div>
+</section>
