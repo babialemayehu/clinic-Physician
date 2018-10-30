@@ -10,12 +10,14 @@
                   <p *ngIf="hisstory.chief_complaint">{{hisstory.chief_complaint}}</p>
                   <p *ngIf="!hisstory.chief_complaint" class="secondery" style="opacity: 0.3"><b>No complaint</b></p>
               </div>
+          </div>
+          <div>
               <div class="row">
                   <div class="col m3">
-                    <div class="col s4">
-                        <img src="assets/thermometer.svg" style="width: 1.4rem; margin-top: 9px"/>
+                    <div class="col s4" style="margin-top: 16px">
+                        <img src="assets/thermometer.svg" style="width: 3rem; margin-top: 12px"/>
                     </div>
-                    <div class="col s8">
+                    <div class="col s8" style="padding-left: 4px">
                       <p>Temprature</p>
                       <h5 *ngIf="hisstory.temprature">{{hisstory.temprature}}oC</h5>
                       <h6 *ngIf="!hisstory.temprature" class="secondery">Not mesured</h6>
@@ -23,10 +25,10 @@
                     
                   </div>
                   <div class="col m3">
-                      <div class="col s4">
-                          <img src="assets/thermometer.svg" style="width: 1.4rem; margin-top: 9px"/>
+                      <div class="col s4" style="margin-top: 16px">
+                          <img src="assets/sphygmomanometer.svg" style="width: 3rem; margin-top: 12px"/>
                       </div>
-                      <div class="col s8">
+                      <div class="col s8" style="padding-left: 4px">
                         <p>BP</p>
                         <h5 *ngIf="hisstory.BP">{{hisstory.BP}}</h5>
                         <h6 *ngIf="!hisstory.BP" class="secondery">Not mesured</h6>
@@ -34,20 +36,20 @@
                     
                   </div>
                   <div class="col m3">
-                      <div class="col s4">
-                          <img src="assets/thermometer.svg" style="width: 1.4rem; margin-top: 9px"/>
+                      <div class="col s4" style="margin-top: 16px">
+                          <img src="assets/thermometer.svg" style="width: 3rem; margin-top: 12px"/>
                       </div>
-                      <div class="col s8">
+                      <div class="col s8" style="padding-left: 4px">
                         <p>Puls rate</p>
                         <h5 *ngIf="hisstory.puls_rate">{{hisstory.puls_rate}}</h5>
                         <h6 *ngIf="!hisstory.puls_rate" class="secondery">Not mesured</h6>
                       </div>                
                   </div>
                   <div class="col m3">
-                      <div class="col s4">
-                          <img src="assets/thermometer.svg" style="width: 1.4rem; margin-top: 9px"/>
+                      <div class="col s4" style="margin-top: 16px">
+                          <img src="assets/thermometer.svg" style="width: 3rem; margin-top: 12px"/>
                       </div>
-                      <div class="col s8">
+                      <div class="col s8" style="padding-left: 4px">
                         <p>Respiratory rate</p>
                         <h5 *ngIf="hisstory.respiratory_rate">{{hisstory.respiratory_rate}}</h5>
                         <h6 *ngIf="!hisstory.respiratory_rate" class="secondery">Not mesured</h6>

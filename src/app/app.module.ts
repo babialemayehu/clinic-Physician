@@ -80,6 +80,7 @@ import { DiagnosisComponent } from './diagnosis/diagnosis.component';
 import { ViewHisstoryComponent } from './view-hisstory/view-hisstory.component';
 import { LabResultComponent } from './lab-result/lab-result.component';
 import { PrescriptionComponent } from './prescription/prescription.component';
+import { StartComponent } from './start/start.component';
 
 @NgModule({
   declarations: [
@@ -121,6 +122,7 @@ import { PrescriptionComponent } from './prescription/prescription.component';
     ViewHisstoryComponent,
     LabResultComponent,
     PrescriptionComponent,
+    StartComponent,
    
     // ContextMenu,
   ],

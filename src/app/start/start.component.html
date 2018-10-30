@@ -1,0 +1,22 @@
+<section>
+  <mat-card style="margin: 10%">
+    <div class="progress" [class.hide]="!loading" >
+      <div class="indeterminate"></div>
+    </div>
+    <div [class.form-loading]="loading">
+      <h3 class="center">Wellcome</h3>
+      <h6 class="center">Do you want to start treatement?</h6>
+      <br>
+      <div style="width: 80%; margin:auto">
+        <!-- <app-room-number 
+        (status)="onStatus($event)" 
+        [roomNumber]="($auth)?.room_number"
+        ></app-room-number>            -->
+      </div>
+      
+      <div style="width: 100%; text-align: center;">
+        <!-- <button mat-flat-button color="primary" (click)="next()">Start</button> -->
+      </div>
+    </div> 
+  </mat-card>
+ </section>

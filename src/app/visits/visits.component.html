@@ -8,7 +8,10 @@
 </div>
 <div class="container" [hidden]="!(loaded && !error)">
   <div class="row">
-    <div class="mat-elevation-z8 col s12 m10 offset-m1">
+    <div class="col m1">
+      <!-- <button mat-icon-button [routerLink]="'/hisstory/'+queue_id"><mat-icon>arrow_back</mat-icon></button> -->
+    </div>
+    <div class="mat-elevation-z8 col s12 m10 ">
       <table mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
         <!-- number Column -->
         <ng-container matColumnDef="no">
