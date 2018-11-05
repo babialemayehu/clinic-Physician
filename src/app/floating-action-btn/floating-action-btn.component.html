@@ -1,28 +1,30 @@
-<div class="fixed-action-btn">
-    <a class="btn-floating btn-large accent">
-      <i class="large material-icons">add</i>
-    </a>
-    <ul>
-      <li (click)="action.emit(9)">
-        <a class="btn-floating red">
-          <img src="assets/speaker.svg" style="width: 1.4rem; margin-top: 9px"/>
-        </a>
-      </li>    
-      <li (click)="action.emit(2)">
-        <a class="btn-floating yellow">
-          <img src="assets/drug.svg" style="width: 1.4rem; margin-top: 9px"/>
-        </a>
-      </li>
-      <li (click)="action.emit(3)">
-        <a class="btn-floating green modal-trigger" >
-          <img src="assets/flask-full.svg" style="width: 1.3rem; margin-top: 10px"/>
-        </a>
-      </li>
-      <li (click)="action.emit(4)">
-        <a class="btn-floating blue darken-1">
-          <i class="material-icons">navigate_next</i>
-        </a>
-      </li>
-    </ul>
-</div>
+<div id="FAB" (click)="open()" (mouseenter)="open()" (mouseleave)="close()">
+  <ul id="options" class="options">
+    <li (click)="action.emit(4)">
+      <button mat-mini-fab class="red">
+        <img src="assets/speaker.svg" style="width: 1.4rem;"/>
+      </button>
+    </li>
 
+    <li (click)="action.emit(3)">
+      <button mat-mini-fab class="yellow">
+        <img src="assets/drug.svg" style="width: 1.4rem;"/>
+      </button>
+    </li>
+
+    <li (click)="action.emit(2)">
+      <button mat-mini-fab class="green">
+        <img src="assets/flask-full.svg" style="width: 1.4rem;"/>
+      </button>
+    </li>
+
+    <li (click)="action.emit(1)">
+      <button mat-mini-fab class="blue white-text">
+        <mat-icon>navigate_next</mat-icon>
+      </button>
+    </li>
+  </ul>
+  <button mat-fab color="accent" class="white-text" (hover)="console.log('hover')">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

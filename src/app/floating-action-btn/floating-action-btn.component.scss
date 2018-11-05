@@ -1,0 +1,55 @@
+@keyframes options{
+    from{
+        margin-bottom: -22px; 
+        opacity: 0;
+    }
+    to{
+        margin-top: 12px; 
+        opacity: 1; 
+    }
+}
+@keyframes optionsRev{
+    from{
+       margin-top: 12px; 
+        opacity: 1;
+    }
+    to{
+        margin-bottom: -22px; 
+        opacity: 0; 
+    }
+}
+
+
+#FAB{
+    position: fixed;
+    right: 16px; 
+    bottom: 52px; 
+    
+    .options{
+        list-style: none; 
+        li{
+            text-align: center; 
+            margin-bottom: 12px; 
+            opacity: 0; 
+        }
+        
+    }
+
+    .open{
+        li{
+            opacity: 1;
+            animation-name: options; 
+            animation-delay: 0s; 
+            animation-duration: 0.5s; 
+            animation-timing-function: linear; 
+        }    
+    }
+    .close{
+        li{
+            animation-name: optionsRev; 
+            animation-delay: 0s; 
+            animation-duration: 0.5s; 
+            animation-timing-function: linear; 
+        }    
+    }
+}

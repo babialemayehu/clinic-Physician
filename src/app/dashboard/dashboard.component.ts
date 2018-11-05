@@ -11,6 +11,7 @@ import { User } from '../model/User';
 import { Hisstory } from '../model/Hisstory'; 
 import { UserService } from '../service/user.service';
 import { DiagnosisComponent } from '../diagnosis/diagnosis.component';
+import { HisstoryService } from '../service/hisstory.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -40,6 +41,7 @@ export class DashboardComponent implements OnInit {
     private _router: Router, 
     private _activeRoute: ActivatedRoute,
     private _dialog: MatDialog, 
+    private _hisstory: HisstoryService
   ) { }
 
   ngOnInit() {
@@ -134,7 +136,11 @@ export class DashboardComponent implements OnInit {
             this.next(); 
             break; 
           case 'finish': 
-            this.update.stateNext++; 
+            this._hisstory.close(this.$queue.id).subscribe(
+              response => {
+                this.update.stateNext++;
+              }
+            )
             break; 
         } 
       }

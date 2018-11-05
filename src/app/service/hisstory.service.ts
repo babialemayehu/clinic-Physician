@@ -39,4 +39,9 @@ export class HisstoryService {
     const URL  = this.$root + "ajax/get/hisstory/view/"+queue_id; 
     return this._http.get<Hisstory>(URL); 
   }
+
+  close(queue_id: number): Observable<boolean>{
+    const URL = this.$root + "ajax/update/hisstory/close/"+queue_id; 
+    return this._http.put<boolean>(URL, {}); 
+  }
 }

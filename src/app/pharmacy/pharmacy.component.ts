@@ -31,7 +31,7 @@ export class PharmacyComponent implements OnInit {
   private filter: FormControl = new FormControl(); 
 
   constructor(
-    private _lab: PharmacyService, 
+    private _pharmacy: PharmacyService, 
     private _route:Router, 
     private _form: FormBuilder) { }
 
@@ -44,18 +44,18 @@ export class PharmacyComponent implements OnInit {
       root_id: ["", Validators.required ],
       frequency_id: ["", Validators.required ],
     })
-    this._lab.drugAutoComplet("").subscribe(
+    this._pharmacy.drugAutoComplet("").subscribe(
       tests => { this.drugAuto = tests; }
     )
     this.add.controls.name.valueChanges.subscribe(
       value => {  
-          this._lab.drugAutoComplet(value).subscribe(
+          this._pharmacy.drugAutoComplet(value).subscribe(
           tests => { this.drugAuto = tests;this.fullDrug = tests;  }
       )}
     )
     
-    this._lab.getFrequencies().subscribe(frequencies => {this.frequencies = frequencies;}); 
-    this._lab.getRoots().subscribe( roots => { this.roots = roots }); 
+    this._pharmacy.getFrequencies().subscribe(frequencies => {this.frequencies = frequencies;}); 
+    this._pharmacy.getRoots().subscribe( roots => { this.roots = roots }); 
   }
 
   $add(){
@@ -91,7 +91,7 @@ export class PharmacyComponent implements OnInit {
 
   send(){
     this.loading = true; 
-    this._lab.prescribe(this.queue.hisstory.id, this.prescriptions).subscribe(
+    this._pharmacy.prescribe(this.queue.hisstory.id, this.prescriptions).subscribe(
       value => {
         this.loading = false; 
         this.prescriptions = []; 
