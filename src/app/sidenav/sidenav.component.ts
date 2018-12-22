@@ -21,4 +21,12 @@ export class SidenavComponent implements OnInit {
   ngOnInit() {
    
   }
+
+  logout(){
+    this._user.logout().subscribe(
+      success =>{
+        window.location.href = success.redirectTo; 
+      }
+    ); 
+  }
 }

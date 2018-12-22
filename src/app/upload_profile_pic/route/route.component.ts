@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from '../../model/User';
 
 @Component({
   selector: 'app-route',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RouteComponent implements OnInit {
 
+  private loading = false; 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onUpload(observ: string){
+    this.loading = ('waiting' == observ); 
+  }
 }

@@ -68,9 +68,10 @@ export class DashboardComponent implements OnInit {
   next(){
     this.loading  = true; 
     this._queue.next().subscribe(
-      (responce) => {
+      (queue) => {
         this.loading = false;
-        this.open(responce); 
+        this._router.navigate(['/hisstory/'+queue.hisstory.id]); 
+        //this.open(queue); 
       }, 
       (error) => {
         this.loading = false; 
@@ -108,11 +109,18 @@ export class DashboardComponent implements OnInit {
     )
   }
   $state(num: number){ 
+    console.log(num); 
     switch(num){
-      case 4: 
+      case 1: 
         this.next(); 
       break; 
-      case 9: 
+      case 2:
+        this._router.navigate(['/lab/request/'+this.$queue.id]); 
+      break; 
+      case 3: 
+        this._router.navigate(['/prescription/prescribe/'+this.$queue.id]); 
+      break; 
+      case 4: 
         this.call(); 
       break; 
       default: 

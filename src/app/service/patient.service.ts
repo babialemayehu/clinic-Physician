@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Patient } from '../model/Patient'; 
 import { Department } from '../model/Department';
+import { RootURL } from '../model/RootURL';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class PatientService {
 
   constructor(public _http: HttpClient) { }
 
-  private root = "http://clinic"; 
+  private root = RootURL;  
 
   create(patient:Patient): Observable<Patient>{
     const URL = this.root+"/ajax/post/patient/new"; 

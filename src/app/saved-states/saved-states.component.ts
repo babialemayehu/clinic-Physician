@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PatientQueueService } from '../service/patient-queue.service';
 import { Patient_queue } from '../model/Patient_queue';
+import { Router } from '@angular/router';
 
 enum Operation{
     NEXT, THIS, PREVIOUS, CHOOSE_SIDE
@@ -27,7 +28,7 @@ export class SavedStatesComponent implements OnInit {
   
   
   private savedQueues: Patient_queue[] = []; 
-  constructor(private _queue: PatientQueueService) { }
+  constructor(private _queue: PatientQueueService, private _router: Router) { }
 
   ngOnChanges(){
     if(typeof this.activeQueueId === 'undefined'){
@@ -77,6 +78,18 @@ export class SavedStatesComponent implements OnInit {
   }
 
   $open(queue: Patient_queue){
-    this.open.emit(queue); 
+    let to: string; 
+    switch(queue.status){
+      case 4: 
+        to = 'lab/result/'+queue.hisstory.id; 
+        this._queue.labSeen(queue.id).subscribe(
+          ()=> { this.getSaved(); }
+        ); 
+        break; 
+      default: 
+        to = 'hisstory/'+queue.hisstory.id
+    }
+    this._router.navigate([to]); 
+    //this.open.emit(queue); 
   }
 }

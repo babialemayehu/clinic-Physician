@@ -6,12 +6,10 @@
        </mat-card>
     </div>
     <div class="col m8 l9 s12">  
-      <div id="show-area">
-        <mat-card>
-          <app-prescription-table [prescriptions]="$prescriptions"></app-prescription-table>
-        </mat-card>
-        
-      </div>
+      <button mat-icon-button>
+        <mat-icon (click)="$back()">arrow_back</mat-icon>
+      </button>
+      <app-pharmacy [queue]="$queue" (status)="$state($event) "></app-pharmacy>
     </div>
   </div>
- </section>
+</section>

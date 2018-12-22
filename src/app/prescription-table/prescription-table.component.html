@@ -1,0 +1,53 @@
+<table mat-table [dataSource]="prescriptionDatasource"  *ngIf="(prescriptions)?.length > 1"
+  class="mat-elevation-z0">
+  
+    <!-- number Column -->
+    <ng-container matColumnDef="no">
+        <th mat-header-cell *matHeaderCellDef> No </th>
+        <td mat-cell *matCellDef="let prescription"> {{prescriptions.indexOf(prescription)+1}} </td>
+      </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let prescription"> {{prescription.name}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="dose">
+        <th mat-header-cell *matHeaderCellDef> Dose </th>
+        <td mat-cell *matCellDef="let prescription"> {{prescription.dose}} </td>
+      </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="root">
+        <th mat-header-cell *matHeaderCellDef> Root </th>
+        <td mat-cell *matCellDef="let prescription"> {{prescription.root}} </td>
+      </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="frequency">
+        <th mat-header-cell *matHeaderCellDef> Freqency </th>
+        <td mat-cell *matCellDef="let prescription"> {{prescription.frequency}} </td>
+      </ng-container>
+  
+    <!-- icon Column -->
+    <!-- <ng-container matColumnDef="icon">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let prescription" style="text-align: right">
+        <button mat-icon-button class="danger-text" (click)="remove(prescription)">
+          <mat-icon>remove_circle_outline</mat-icon>
+        </button>  
+      </td>
+    </ng-container> -->
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div class="row" *ngIf="(prescriptions)?.length == 0">
+    <div class="center" style="width: 100%; opacity: 0.8">
+      <h6><strong class="tertiary center">
+        <B>No prescriptions</B>
+      </strong></h6>
+    </div>
+  </div>

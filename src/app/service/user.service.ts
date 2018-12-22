@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { User } from '../model/User'; 
 import { Pagination } from '../model/Pagination'; 
+import { RootURL } from '../model/RootURL';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { Pagination } from '../model/Pagination';
 export class UserService {
   
 
-  public root = "http://clinic"; 
+  private root = RootURL;  
   constructor(public http:HttpClient) { }
 
   postCreateUser(data): Observable<User>{
@@ -63,4 +64,18 @@ export class UserService {
     let $url = this.root+"/ajax/update/room number/"+number; 
     return this.http.put<User>($url, {});
   }
+
+  uploadPic(img: File): Observable<User>{
+    let $url = this.root + "/ajax/file/upload/profile pic" 
+    const fd = new FormData(); 
+    fd.append('image', img, img.name); 
+    return this.http.post<User>($url, fd); 
+  }
+  logout():Observable<Logout>{
+    let $url = this.root + "/ajax/post/logout"; 
+    return this.http.post<Logout>($url, {}); 
+  }
 }
+  interface Logout{
+    redirectTo
+  }

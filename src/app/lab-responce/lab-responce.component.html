@@ -1,52 +1,23 @@
 <!-- <div class="container"> -->
   <div class="row">
     <div class="col m4 l3 s12">
-      <app-left-side></app-left-side>
+      <mat-card id="queue">
+        <app-queue-min loadTriggr="1"></app-queue-min>
+      </mat-card>
     </div>
 
       <div class="col m8 l9 s12">
-        <mat-card style="width: 90; margin: auto">
-          <button mat-icon-button [routerLink]="'/hisstory/'+queue_id"><mat-icon>arrow_back</mat-icon></button>
-          <h5 style="margin-left: 3em; display: inline">Laboratory Requests</h5>
+        <ul style="list-style: none">
+          <li style="display: inline"><button mat-icon-button [routerLink]="'/lab/request/'+queue_id"><mat-icon>arrow_back</mat-icon></button></li>
+          <li style="display: inline"><button mat-icon-button [routerLink]="'/hisstory/'+queue_id"><mat-icon>home</mat-icon></button></li>
+        </ul>
+
+        
+        <mat-card style="width: 90; margin: auto; padding: 48px">
+          
+          <h5>Laboratory Requests</h5>
           <app-lab-result [tests]="requests"></app-lab-result>
-          <!-- <table mat-table [dataSource]="requestDatasource" 
-          class="mat-elevation-z0">
 
-            <ng-container matColumnDef="no">
-                <th mat-header-cell *matHeaderCellDef> No </th>
-                <td mat-cell *matCellDef="let request"> {{requests.indexOf(request)+1}} </td>
-              </ng-container>
-
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef> Name </th>
-              <td mat-cell *matCellDef="let request"> {{request.laboratory_test.name}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="normality">
-              <th mat-header-cell *matHeaderCellDef> Normality </th>
-              <td mat-cell *matCellDef="let request">
-                <span *ngIf="request.normality == null" class='secondery small'>Pending..</span>
-                <span *ngIf="request.normality != null">
-                  <mat-icon *ngIf="request.normality" style="color: green">done</mat-icon>
-                  <mat-icon *ngIf="!request.normality" style="color: red">close</mat-icon>
-                </span>
-                
-              </td>
-            </ng-container>
-
-            <ng-container matColumnDef="value">
-              <th mat-header-cell *matHeaderCellDef> Value </th>
-              <td mat-cell *matCellDef="let request"> {{request.value }} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="note">
-              <th mat-header-cell *matHeaderCellDef> Note </th>
-              <td mat-cell *matCellDef="let request"> {{request.note}} </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table> -->
         </mat-card>
       </div>    
   </div>

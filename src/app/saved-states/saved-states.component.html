@@ -7,7 +7,7 @@
   (click)="$open(queue)">
     <ul>
       <li>.</li>
-      <li>{{queue.patient.reg_id}}</li>
+      <li>{{queue.patient.reg_id}}<span style="color:red" *ngIf="queue.status==4">*</span></li>
       <li>.</li>
     </ul>
   </div> 

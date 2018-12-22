@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   public menuItems = [
-    {href: 'users', text: 'Users'}
+   // {href: 'users', text: 'Users'}
   ]; 
   constructor() { }
 

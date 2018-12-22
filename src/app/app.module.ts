@@ -81,6 +81,9 @@ import { ViewHisstoryComponent } from './view-hisstory/view-hisstory.component';
 import { LabResultComponent } from './lab-result/lab-result.component';
 import { PrescriptionComponent } from './prescription/prescription.component';
 import { StartComponent } from './start/start.component';
+import { LaboratoryRequestComponent } from './hisstory/laboratory-request/laboratory-request.component';
+import { PrescriptionComponent as HisstoryPrescriptionComponent } from './hisstory/prescription/prescription.component';
+import { PrescriptionTableComponent } from './prescription-table/prescription-table.component';
 
 @NgModule({
   declarations: [
@@ -123,7 +126,9 @@ import { StartComponent } from './start/start.component';
     LabResultComponent,
     PrescriptionComponent,
     StartComponent,
-   
+    LaboratoryRequestComponent,
+    HisstoryPrescriptionComponent,
+    PrescriptionTableComponent
     // ContextMenu,
   ],
   imports: [

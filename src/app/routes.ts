@@ -9,6 +9,9 @@ import { VisitsComponent } from './visits/visits.component';
 import { RouteComponent as UploadProfile } from './upload_profile_pic/route/route.component'; 
 import { LabResponceComponent } from './lab-responce/lab-responce.component';
 import { ViewHisstoryComponent } from './view-hisstory/view-hisstory.component';
+import { LaboratoryRequestComponent } from './hisstory/laboratory-request/laboratory-request.component';
+import { PrescriptionComponent as PrescripitonInHisstory} from './hisstory/prescription/prescription.component';
+import { PrescriptionComponent  } from './prescription/prescription.component';
 
 export const appRoutes: Routes = [
     {path: '', component: DashboardComponent },
@@ -23,4 +26,7 @@ export const appRoutes: Routes = [
     {path: 'settings/change password', component: ChangePasswordRouteComponent },
     {path: 'lab/result/:queue_id', component: LabResponceComponent}, 
     {path: 'view/hisstroy/:queue_id', component:ViewHisstoryComponent }, 
+    {path: 'lab/request/:queue_id', component: LaboratoryRequestComponent}, 
+    {path: 'prescription/prescribe/:queue_id', component: PrescripitonInHisstory}, 
+    {path: 'prescription/prescribed/:queue_id', component: PrescriptionComponent}
 ]; 

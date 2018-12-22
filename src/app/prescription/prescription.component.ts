@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Prescription } from '../model/Prescription';
+import { ActivatedRoute } from '@angular/router';
+import { PharmacyService } from '../service/pharmacy.service';
+import { HisstoryService } from '../service/hisstory.service';
+import { PatientQueueService } from '../service/patient-queue.service';
 
 @Component({
   selector: 'app-prescription',
@@ -8,16 +12,26 @@ import { Prescription } from '../model/Prescription';
   styleUrls: ['./prescription.component.scss']
 })
 export class PrescriptionComponent implements OnInit {
-  @Input() prescriptions: Prescription[] = []; 
-  private prescriptionDatasource: MatTableDataSource<Prescription> = new MatTableDataSource(); 
-  private displayedColumns = ["no", "name", "frequency", "root", "dose"]; 
+  private $prescriptions: Prescription[] = []; 
 
   ngOnChanges(){
-    this.prescriptionDatasource.data = this.prescriptions;
   }
-  constructor() { }
+  constructor(private _activeRoute: ActivatedRoute,private _queue:PatientQueueService, private _hisstory:HisstoryService) { }
 
   ngOnInit() {
+    this._activeRoute.params.subscribe(
+      (param) => {
+        this.$prescriptions = param.queue_id; 
+        this._queue.getQueue(param.queue_id).subscribe(
+          (queue)=>{
+            this._hisstory.viewHisstroy(queue.hisstory.id).subscribe(
+              (hisstory)=>{
+                this.$prescriptions = hisstory.prescriptions; 
+              }
+            ); 
+          }); 
+      }
+    ); 
   }
 
 }

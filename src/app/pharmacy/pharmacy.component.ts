@@ -90,6 +90,7 @@ export class PharmacyComponent implements OnInit {
   }
 
   send(){
+    console.log(this.queue); 
     this.loading = true; 
     this._pharmacy.prescribe(this.queue.hisstory.id, this.prescriptions).subscribe(
       value => {
@@ -97,6 +98,7 @@ export class PharmacyComponent implements OnInit {
         this.prescriptions = []; 
         this.drugDataSource.data = this.prescriptions; 
         this.status.emit(1); 
+        this._route.navigate(['prescription/prescribed/'+this.queue.id]); 
       }
     )
   }

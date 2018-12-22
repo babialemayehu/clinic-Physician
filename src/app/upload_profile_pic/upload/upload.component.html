@@ -2,5 +2,6 @@
   <div id="profile">
     <img [src]="pic"/>
   </div>
-  <button mat-flat-button color="primary">Upload profile picture</button>
+  <input type="file" hidden #image (change)="selected($event)">
+  <button mat-flat-button (click)="image.click()" color="primary">Upload profile picture</button>
 </section>

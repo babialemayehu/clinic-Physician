@@ -1,0 +1,27 @@
+<section>
+  <div class="row">
+    <div class="col m4 l3 s12">
+       <mat-card id="queue">
+         <app-queue-min [loadTriggr]="update.queue"></app-queue-min>
+       </mat-card>
+    </div>
+    <div class="col m8 l9 s12 ">  
+      <div  style="margin-left: 24px; margin-right: 24px">
+          <ul style="list-style: none; display: inline-block">
+            <li style="display: inline-block">
+              <button mat-icon-button [routerLink]="'/hisstory/'+ $queue_id">
+                <mat-icon>arrow_back</mat-icon>
+              </button>
+            </li>
+            <li style="display: inline-block">
+              <button mat-icon-button [routerLink]="'/lab/result/'+ $queue_id">
+                <mat-icon>send</mat-icon> 
+              </button>
+            </li>
+          </ul>
+
+          <app-laboratory [queue]="$queue" ></app-laboratory> 
+      </div>
+    </div>
+  </div>
+</section>

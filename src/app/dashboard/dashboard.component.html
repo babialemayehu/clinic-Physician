@@ -52,7 +52,7 @@
             </div>
           </mat-card> 
        </section>
-<!-- STATE 2    -->
+<!-- STATE 2    --> 
        <section *ngIf="state == 2">
           <button mat-icon-button>
             <mat-icon (click)="$back()">arrow_back</mat-icon>
@@ -68,10 +68,14 @@
        </section>
 <!-- STATE 5  -->
        <section *ngIf="state == 5">
-          <mat-card style="margin: 15%;">
+          <mat-card style="margin: 10%;">
             <div class="container">
               <div class="row">
                   <div class="center" style="width: 100%; opacity: 0.8">
+                    <div class="img" style="border-radius: 50%; background: #fbfbfb; padding: 24px;margin:auto; width: 170px; height: 170px; border-radius: 50%">
+                      <img src="/img/bench.svg" style="width: 100px; height: 100px;margin-top: 13px">
+                    </div>
+                    <br>
                     <h6><strong class="secondery center">
                       <B>There is no patient in the queue. <br>You will be notified when new patient arrived</B>
                     </strong></h6>
