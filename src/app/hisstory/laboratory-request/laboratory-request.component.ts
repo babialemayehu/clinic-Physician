@@ -9,7 +9,7 @@ import { PatientQueueService } from '../../service/patient-queue.service';
   styleUrls: ['./laboratory-request.component.scss']
 })
 export class LaboratoryRequestComponent implements OnInit {
-  private $queue:Patient_queue; 
+  private $queue:Patient_queue = null; 
   private $queue_id: number; 
   private update: any = {
     queue: 0
@@ -23,8 +23,7 @@ export class LaboratoryRequestComponent implements OnInit {
         this._queue.getQueue(param.queue_id).subscribe(
           (queue)=>{
 
-            this.$queue = param.queue
-            console.log(this.$queue); 
+            this.$queue = queue;
           }
         ); 
       }

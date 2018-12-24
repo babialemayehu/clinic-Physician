@@ -19,8 +19,10 @@
               </button>
             </li>
           </ul>
-
-          <app-laboratory [queue]="$queue" ></app-laboratory> 
+          <span *ngIf="$queue">
+            <app-laboratory [queue]="$queue" ></app-laboratory> 
+          </span>
+          
       </div>
     </div>
   </div>

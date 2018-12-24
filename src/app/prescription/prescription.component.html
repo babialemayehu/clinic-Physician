@@ -7,6 +7,13 @@
     </div>
     <div class="col m8 l9 s12">  
       <div id="show-area">
+          <!-- <ul style="list-style: none">
+            <li style="display: inline"><button mat-icon-button [routerLink]="'/lab/request/'+queue_id"><mat-icon>arrow_back</mat-icon></button></li> 
+            <li style="display: inline"><button mat-icon-button [routerLink]="'/hisstory/'+queue_id"><mat-icon>arrow_back</mat-icon></button></li>
+          </ul> -->
+        <ul style="list-style: none">
+          <li style="display:inline"><button mat-icon-button [routerLink]="'/hisstory/'+queue_id"><mat-icon>arrow_back</mat-icon></button></li>
+        </ul>
         <mat-card>
           <app-prescription-table [prescriptions]="$prescriptions"></app-prescription-table>
         </mat-card>

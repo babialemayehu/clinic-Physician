@@ -4,6 +4,7 @@ import { Laboratory_test } from '../model/Laboratory_test';
 import { LaboratoryService } from '../service/laboratory.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Patient_queue } from '../model/Patient_queue';
 
 export interface PeriodicElement {
   name: string;
@@ -17,7 +18,7 @@ export interface PeriodicElement {
   styleUrls: ['./laboratory.component.scss']
 })
 export class LaboratoryComponent implements OnInit {
-  @Input() queue; 
+  @Input() queue: Patient_queue; 
   
   private testDatasource = new MatTableDataSource<Laboratory_test>(); 
   private tests: Laboratory_test[] = [];
@@ -31,6 +32,9 @@ export class LaboratoryComponent implements OnInit {
 
   constructor(private _lab: LaboratoryService, private _route:Router) { }
 
+  ngOnChanges(){
+    console.log(this.queue); 
+  }
   ngOnInit() {
     this._lab.autoComplet("all").subscribe(
       tests => { this.testAuto = tests; }

@@ -13,6 +13,7 @@ import { PatientQueueService } from '../service/patient-queue.service';
 })
 export class PrescriptionComponent implements OnInit {
   private $prescriptions: Prescription[] = []; 
+  private queue_id: number; 
 
   ngOnChanges(){
   }
@@ -24,6 +25,7 @@ export class PrescriptionComponent implements OnInit {
         this.$prescriptions = param.queue_id; 
         this._queue.getQueue(param.queue_id).subscribe(
           (queue)=>{
+            this.queue_id = queue.id; 
             this._hisstory.viewHisstroy(queue.hisstory.id).subscribe(
               (hisstory)=>{
                 this.$prescriptions = hisstory.prescriptions; 
