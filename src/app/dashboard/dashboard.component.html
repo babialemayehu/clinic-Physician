@@ -1,6 +1,10 @@
 <section>
  <div class="row">
    <div class="col m4 l3 s12">
+     <mat-card *ngIf="patient">
+        <app-patient-side-view [patient]="patient"></app-patient-side-view>
+     </mat-card>
+     
       <mat-card id="queue">
         <app-queue-min [loadTriggr]="update.queue"></app-queue-min>
       </mat-card>

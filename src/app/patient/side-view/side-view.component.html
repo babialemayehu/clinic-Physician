@@ -1,0 +1,9 @@
+<div class="row">
+    <h6 style="margin-left: 24px"><b>Patient</b></h6>
+</div>
+<h6 style="display: inline">{{(patient)?.first_name}} {{(patient)?.father_name}} {{(patient)?.grand_father_name}}</h6>
+<!-- <strong class="right"><span style="margin-right: 24px">{{(patient)?.reg_id}}</span> 
+</strong><br> -->
+<br>
+<strong class="secondery">{{((patient)?.department)?.name}} Department</strong><br>
+<strong class="secondery">Id number {{(patient)?.reg_id}}</strong><br>

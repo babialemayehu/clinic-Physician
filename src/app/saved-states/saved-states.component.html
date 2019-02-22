@@ -4,7 +4,9 @@
   [style.width]="width" 
   id="tab" 
   [class.active]="queue.id == active"
-  (click)="$open(queue)">
+  (click)="$open(queue)"
+  [matTooltip]="queue.patient.first_name+' '+queue.patient.father_name"
+  >
     <ul>
       <li>.</li>
       <li>{{queue.patient.reg_id}}<span style="color:red" *ngIf="queue.status==4">*</span></li>

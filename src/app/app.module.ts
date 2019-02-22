@@ -21,6 +21,7 @@ import { RegisterationFormComponent } from './registeration-form/registeration-f
 import { HttpClientModule} from "@angular/common/http";
 import { AlertComponent } from './alert/alert.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CookieService } from 'ngx-cookie-service'; 
 
 import { 
   MatButtonModule,
@@ -40,7 +41,8 @@ import {
   MatAutocompleteModule, 
   MatDatepickerModule,
   MatNativeDateModule,
-  MatChipsModule, 
+  MatChipsModule,
+  MatTooltipModule
 } from '@angular/material';
 import { UsersComponent } from './users/users.component';
 
@@ -84,6 +86,8 @@ import { StartComponent } from './start/start.component';
 import { LaboratoryRequestComponent } from './hisstory/laboratory-request/laboratory-request.component';
 import { PrescriptionComponent as HisstoryPrescriptionComponent } from './hisstory/prescription/prescription.component';
 import { PrescriptionTableComponent } from './prescription-table/prescription-table.component';
+import { SideViewComponent } from './patient/side-view/side-view.component';
+import { TaskbarViewComponent } from './patient/taskbar-view/taskbar-view.component';
 
 @NgModule({
   declarations: [
@@ -128,7 +132,9 @@ import { PrescriptionTableComponent } from './prescription-table/prescription-ta
     StartComponent,
     LaboratoryRequestComponent,
     HisstoryPrescriptionComponent,
-    PrescriptionTableComponent
+    PrescriptionTableComponent,
+    SideViewComponent,
+    TaskbarViewComponent
     // ContextMenu,
   ],
   imports: [
@@ -158,6 +164,7 @@ import { PrescriptionTableComponent } from './prescription-table/prescription-ta
     MatDatepickerModule,
     MatNativeDateModule,
     MatChipsModule,
+    MatTooltipModule
   ],
   entryComponents: [
     RegisterationFormComponent, 
@@ -171,6 +178,7 @@ import { PrescriptionTableComponent } from './prescription-table/prescription-ta
   ], 
   providers: [
     UserService, 
+    CookieService
   ],
   bootstrap: [AppComponent]
 }) 

@@ -12,12 +12,16 @@
             [formControl]="name" 
             placeholder="Drug" 
             [matAutocomplete]="auto"
-            #drugInput (focus)="onFocus(drugInput.value)">    
+            #drugInput (focus)="onFocus(drugInput.value)" 
+            (focusout)="onDrugFocusOut(drugInput.value)">
             <mat-autocomplete #auto="matAutocomplete">
               <mat-option *ngFor="let drug of drugAuto" [value]="drug.name">
                 {{ drug.name }}
               </mat-option>
             </mat-autocomplete>
+            <mat-error *ngIf="name.errors?.avalible && name.touched">
+              This drug is not available in stock.
+            </mat-error>
           </mat-form-field>
         </div>
         

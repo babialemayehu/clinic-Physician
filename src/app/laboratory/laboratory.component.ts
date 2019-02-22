@@ -5,6 +5,9 @@ import { LaboratoryService } from '../service/laboratory.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Patient_queue } from '../model/Patient_queue';
+import { MatDialog } from '@angular/material';
+import { AlertComponent } from '../alert/alert.component'; 
+import { CookieService } from 'ngx-cookie-service'; 
 
 export interface PeriodicElement {
   name: string;
@@ -30,7 +33,10 @@ export class LaboratoryComponent implements OnInit {
   private add: FormControl = new FormControl(); 
   private filter: FormControl = new FormControl(); 
 
-  constructor(private _lab: LaboratoryService, private _route:Router) { }
+  constructor(private _lab: LaboratoryService,
+     private _route:Router, 
+     private _dialog: MatDialog,
+     private _cookies: CookieService) { }
 
   ngOnChanges(){
     console.log(this.queue); 
@@ -67,7 +73,7 @@ export class LaboratoryComponent implements OnInit {
     this.testDatasource.data = this.tests; 
   }
 
-  send(){
+  send_request(){
     this.loading = true; 
     this._lab.request(this.tests,this.queue.id).subscribe(
       value => {
@@ -77,5 +83,37 @@ export class LaboratoryComponent implements OnInit {
         this._route.navigate(['/lab/result/'+this.queue.id]); 
       }
     )
+  }
+  send(){
+    let that = this;
+    if(that._cookies.get('lab confrimation') != 'true'){
+      this._dialog.open(AlertComponent, {
+        width: "400px", 
+        disableClose: true, 
+        data: {
+          dialog: 'confirm', 
+          color: "yellow", 
+          title: 'Confirm', 
+          message: 'Do you really want to send this Laboratory request for <b>'+this.queue.patient.father_name+" "+ this.queue.patient.father_name+".</b><br>",
+          checkbox: 'Don\'t show this dialog again', 
+          checkboxStatus: (that._cookies.get('lab confrimation') == 'true'),
+          onCheck: (e)=>{
+            that._cookies.set('lab confrimation', e.checked); 
+          }
+        }
+      }).afterClosed().subscribe(
+        ok => {
+          if(ok.responce == true)
+            this.send_request(); 
+        }, 
+        no => {
+  
+        }
+      ); 
+    }else{
+      this.send_request(); 
+    }
+    
+    
   }
 }

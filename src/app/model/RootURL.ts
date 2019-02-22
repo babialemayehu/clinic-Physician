@@ -1,1 +1,1 @@
-export const RootURL = ''; 
+export const RootURL = 'http://clinic'; 
